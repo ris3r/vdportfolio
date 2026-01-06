@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-gold: #FFD700;
+  --color-black: #050505;
+  --color-text-main: #FFFFFF;
+}
+
+@layer base {
+  body {
+    @apply bg-black text-white font-main overflow-x-hidden antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-md font-semibold text-sm transition-all duration-300 uppercase tracking-wider;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-br from-gold to-gold-dark text-black border-none hover:-translate-y-0.5 hover:shadow-[0_4px_15px_rgba(255,215,0,0.4)];
+  }
+
+  .btn-outline {
+    @apply bg-transparent border border-gold text-gold hover:bg-gold hover:text-black;
+  }
+
+  .glass-panel {
+    @apply bg-gray-light/60 backdrop-blur-md border border-white/10 rounded-xl;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+  
+  .text-gradient-gold {
+     @apply bg-clip-text text-transparent bg-gradient-to-r from-gold via-gold-light to-gold;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505; 
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #333; 
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FFD700; 
+}
