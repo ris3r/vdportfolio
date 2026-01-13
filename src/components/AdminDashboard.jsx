@@ -10,6 +10,7 @@ import { useAuth } from '../context/AuthContext';
 import UsersTab from './admin/UsersTab';
 import InterestsTab from './admin/InterestsTab';
 import ContactsTab from './admin/ContactsTab';
+import ComplianceTab from './admin/ComplianceTab';
 
 const AdminDashboard = () => {
     const { user: currentUserProfile } = useAuth();
@@ -325,7 +326,7 @@ const AdminDashboard = () => {
                 </div>
 
                 {/* Stats Overview */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
                     <div onClick={() => setActiveTab('users')} className={`p-6 rounded-2xl cursor-pointer transition-all border ${activeTab === 'users' ? 'bg-gold/10 border-gold' : 'bg-neutral-900/50 border-white/5 hover:border-white/20'}`}>
                         <div className="flex justify-between items-start mb-4">
                             <div className="text-gray-400 text-sm">Total Users</div>
@@ -346,6 +347,13 @@ const AdminDashboard = () => {
                             <MessageSquare size={20} className={activeTab === 'contacts' ? 'text-gold' : 'text-gray-500'} />
                         </div>
                         <div className="text-3xl font-bold text-white">{stats.totalMessages}</div>
+                    </div>
+                    <div onClick={() => setActiveTab('compliance')} className={`p-6 rounded-2xl cursor-pointer transition-all border ${activeTab === 'compliance' ? 'bg-gold/10 border-gold' : 'bg-neutral-900/50 border-white/5 hover:border-white/20'}`}>
+                        <div className="flex justify-between items-start mb-4">
+                            <div className="text-gray-400 text-sm">Compliance</div>
+                            <Shield size={20} className={activeTab === 'compliance' ? 'text-gold' : 'text-gray-500'} />
+                        </div>
+                        <div className="text-3xl font-bold text-white">Docs</div>
                     </div>
                 </div>
 
@@ -399,6 +407,13 @@ const AdminDashboard = () => {
                                     messages={filterData(messages)}
                                     toggleMessageStatus={toggleMessageStatus}
                                     confirmDeleteSubmission={confirmDeleteSubmission}
+                                    renderEmptyState={renderEmptyState}
+                                />
+                            )}
+
+                            {/* --- COMPLIANCE TAB --- */}
+                            {activeTab === 'compliance' && (
+                                <ComplianceTab
                                     renderEmptyState={renderEmptyState}
                                 />
                             )}

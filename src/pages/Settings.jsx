@@ -13,6 +13,7 @@ const Settings = () => {
         phone: ''
     });
     const [message, setMessage] = useState(null);
+    const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -32,12 +33,47 @@ const Settings = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
+    const validateForm = () => {
+        const newErrors = {};
+
+        // Name Validation
+        if (!formData.name.trim()) {
+            newErrors.name = "Full Name is required.";
+        }
+
+        /* 
+        // Email Validation (Optional if you want to allow email updates)
+        // Note: Firebase email update requires sensitive re-authentication usually.
+        // Assuming we allow it and updateProfile handles it or we just validating format.
+        */
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email)) {
+            newErrors.email = "Please enter a valid email address.";
+        }
+
+        // Phone Validation (10-15 digits)
+        // Only validate if phone is provided (optional field?) or make it required.
+        // Assuming required based on other forms:
+        if (formData.phone) {
+            const phoneRegex = /^\+?[0-9]{10,15}$/;
+            if (!phoneRegex.test(formData.phone.replace(/\s/g, ''))) {
+                newErrors.phone = "Please enter a valid phone number (10-15 digits).";
+            }
+        }
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true);
         setMessage(null);
 
-        setMessage(null);
+        if (!validateForm()) {
+            return;
+        }
+
+        setLoading(true);
 
         try {
             const updateData = {
@@ -49,23 +85,7 @@ const Settings = () => {
             const result = await updateProfile(updateData);
 
             setMessage({ type: 'success', text: 'Profile updated successfully!' });
-
-            /*
-            // If password was updated, AuthContext handles logout/alert.
-            // But if only profile data was updated:
-            if (!formData.password) {
-                setMessage({ type: 'success', text: 'Profile updated successfully!' });
-            } else {
-                // Should be redirected/logged out by AuthContext, but just in case:
-                setMessage({ type: 'success', text: 'Password updated. Logging out...' });
-
-                // Explicitly redirect to login after a short delay to allow user to read message
-                setTimeout(() => {
-                    navigate('/login');
-                }, 2000);
-            }
-            */
-
+            setErrors({});
 
         } catch (error) {
             console.error("Settings Update Error:", error);
@@ -133,11 +153,15 @@ const Settings = () => {
                                             type="tel"
                                             name="phone"
                                             value={formData.phone}
-                                            onChange={handleChange}
+                                            onChange={(e) => {
+                                                handleChange(e);
+                                                setErrors(prev => ({ ...prev, phone: null }));
+                                            }}
                                             placeholder="Add phone number"
-                                            className="w-full bg-neutral-800/50 border border-neutral-700 rounded-xl py-3 pl-12 pr-4 text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/50 transition-all placeholder:text-neutral-600"
+                                            className={`w-full bg-neutral-800/50 border rounded-xl py-3 pl-12 pr-4 text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/50 transition-all placeholder:text-neutral-600 ${errors.phone ? 'border-red-500' : 'border-neutral-700'}`}
                                         />
                                     </div>
+                                    {errors.phone && <p className="text-red-500 text-xs mt-1 ml-1">{errors.phone}</p>}
                                 </div>
                             </div>
                         </div>

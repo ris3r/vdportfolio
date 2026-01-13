@@ -36,22 +36,21 @@ const Services = () => {
         {
             id: 'golden-mentorship',
             title: "The Golden Mentorship",
-            subtitle: "Collaborating & bring you Bundle Offer",
+            subtitle: "Collaborative Bundle Offer",
             price: "₹1,53,000",
             features: [
-                "VINITH D'COSTA FINANCEPEDIA (Knowledge, Tools, Growth)",
-                "Daily Educational Views on Trading",
-                "Weekly Live Demo Trading Sessions",
-                "Astro Prediction Software & Stock Screeners",
-                "Master Prediction Mythology & Financial Astrology",
-                "Educational Seminars, Classes & Coaching"
+                "Vinith Dcosta & Associates: Market Analysis, Softwares & Screener",
+                "VD Financepedia: Weekly Classes (Tuesdays)",
+                "Complete Training Recording of Screeners",
+                "Educational Views on Market Trends",
+                "Pre-market Discussion"
             ],
             isPopular: true
         },
         {
             id: 'premium-mentorship',
             title: "Premium Mentorship",
-            subtitle: "The Only School That Teach You To Make Money",
+            subtitle: "Real Time Market Analysis",
             price: (
                 <div className="flex flex-col">
                     <span>Starts @ ₹6,999/mo</span>
@@ -59,11 +58,11 @@ const Services = () => {
                 </div>
             ),
             features: [
-                "Daily Markets Insights (NIFTY & BANKNIFTY)",
-                "Live Trading Masterclass (Every Week)",
+                "Daily Markets Insights (NIFTY, BANKNIFTY, SENSEX)",
+                "Real Time Market Analysis",
                 "Strong Equity Picks for Wealth Creation",
-                "Options & Futures Strategies",
-                "Half-Yearly Plan: ₹33,999"
+                "Minimum Capital: ₹10,000 - ₹15,000",
+                "Half-Yearly & Yearly Plans Available"
             ],
             isPopular: false
         },
@@ -78,19 +77,6 @@ const Services = () => {
                 "Rebalancing Discipline (Quarterly/Half-yearly)",
                 "Actionable Calls (Buy/Sell signals)",
                 "Yearly Renewal: ₹12,000 + GST"
-            ],
-            isPopular: false
-        },
-        {
-            id: 'crypto-code',
-            title: "The Crypto Code",
-            subtitle: "Decode. Invest. Dominat",
-            price: "₹62,999/yr",
-            features: [
-                "Master the future of wealth",
-                "Build crypto fortune with logic & discipline",
-                "Monthly Plan: ₹6,999",
-                "Half-Yearly Plan: ₹33,999"
             ],
             isPopular: false
         }

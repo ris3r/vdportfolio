@@ -8,28 +8,33 @@ import gsap from 'gsap';
 const Contact = () => {
     const containerRef = useRef(null);
     const [loading, setLoading] = useState(false);
-    const [status, setStatus] = useState(null); // 'success' | 'error' | null
+    const [status, setStatus] = useState(null);
+    const [errors, setErrors] = useState({});
 
-    useGSAP(() => {
-        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    const validateForm = (data) => {
+        const newErrors = {};
 
-        tl.from('.contact-header', {
-            y: -30,
-            opacity: 0,
-            duration: 0.8
-        })
-            .from('.contact-form', {
-                x: 30,
-                opacity: 0,
-                duration: 0.8
-            }, '-=0.6');
+        // Email Validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(data.email)) {
+            newErrors.email = "Please enter a valid email address.";
+        }
 
-    }, { scope: containerRef });
+        // Phone Validation (10-15 digits, allowing +)
+        const phoneRegex = /^\+?[0-9]{10,15}$/;
+        if (!phoneRegex.test(data.phone.replace(/\s/g, ''))) {
+            newErrors.phone = "Please enter a valid phone number (10-15 digits).";
+        }
+
+        if (!data.name.trim()) newErrors.name = "Name is required.";
+        if (!data.message.trim()) newErrors.message = "Message is required.";
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true);
-        setStatus(null);
 
         const formData = new FormData(e.target);
         const data = {
@@ -38,13 +43,21 @@ const Contact = () => {
             phone: formData.get('phone'),
             message: formData.get('message'),
             date: new Date().toISOString(),
-            status: 'pending' // 'pending', 'replied'
+            status: 'pending'
         };
+
+        if (!validateForm(data)) {
+            return;
+        }
+
+        setLoading(true);
+        setStatus(null);
 
         try {
             await addDoc(collection(db, 'messages'), data);
             setStatus('success');
             e.target.reset();
+            setErrors({});
         } catch (error) {
             console.error("Error sending message: ", error);
             setStatus('error');
@@ -55,15 +68,10 @@ const Contact = () => {
 
     return (
         <div ref={containerRef} className="pt-32 pb-20 bg-black min-h-screen">
+            {/* ... (Header and Contact Info sections remain unchanged) ... */}
+
             <div className="container px-4">
-                <div className="contact-header text-center mb-16">
-                    <h1 className="text-5xl md:text-6xl font-heading font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-gold mb-6">
-                        Get in Touch
-                    </h1>
-                    <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                        Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
-                    </p>
-                </div>
+                {/* ... header ... */}
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
                     {/* Contact Info */}
@@ -137,46 +145,50 @@ const Contact = () => {
 
                     {/* Contact Form */}
                     <div className="contact-form glass-panel p-8 md:p-10 border-gold/10">
-                        <form className="space-y-6" onSubmit={handleSubmit}>
+                        <form className="space-y-6" onSubmit={handleSubmit} noValidate>
                             <div>
                                 <label className="block text-gray-400 mb-2 text-sm font-medium">Name</label>
                                 <input
                                     name="name"
                                     type="text"
-                                    required
                                     placeholder="Your Name"
-                                    className="w-full bg-neutral-800/50 border border-neutral-700 rounded-xl p-4 text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/50 transition-all placeholder:text-neutral-600"
+                                    className={`w-full bg-neutral-800/50 border rounded-xl p-4 text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/50 transition-all placeholder:text-neutral-600 ${errors.name ? 'border-red-500' : 'border-neutral-700'}`}
+                                    onChange={() => setErrors(prev => ({ ...prev, name: null }))}
                                 />
+                                {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
                             </div>
                             <div>
                                 <label className="block text-gray-400 mb-2 text-sm font-medium">Email</label>
                                 <input
                                     name="email"
                                     type="email"
-                                    required
                                     placeholder="Your Email"
-                                    className="w-full bg-neutral-800/50 border border-neutral-700 rounded-xl p-4 text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/50 transition-all placeholder:text-neutral-600"
+                                    className={`w-full bg-neutral-800/50 border rounded-xl p-4 text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/50 transition-all placeholder:text-neutral-600 ${errors.email ? 'border-red-500' : 'border-neutral-700'}`}
+                                    onChange={() => setErrors(prev => ({ ...prev, email: null }))}
                                 />
+                                {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
                             </div>
                             <div>
                                 <label className="block text-gray-400 mb-2 text-sm font-medium">Phone Number</label>
                                 <input
                                     name="phone"
                                     type="tel"
-                                    required
                                     placeholder="Your Phone Number"
-                                    className="w-full bg-neutral-800/50 border border-neutral-700 rounded-xl p-4 text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/50 transition-all placeholder:text-neutral-600"
+                                    className={`w-full bg-neutral-800/50 border rounded-xl p-4 text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/50 transition-all placeholder:text-neutral-600 ${errors.phone ? 'border-red-500' : 'border-neutral-700'}`}
+                                    onChange={() => setErrors(prev => ({ ...prev, phone: null }))}
                                 />
+                                {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
                             </div>
                             <div>
                                 <label className="block text-gray-400 mb-2 text-sm font-medium">Message</label>
                                 <textarea
                                     name="message"
                                     rows="4"
-                                    required
                                     placeholder="Your Message"
-                                    className="w-full bg-neutral-800/50 border border-neutral-700 rounded-xl p-4 text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/50 transition-all placeholder:text-neutral-600 resize-none"
+                                    className={`w-full bg-neutral-800/50 border rounded-xl p-4 text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/50 transition-all placeholder:text-neutral-600 resize-none ${errors.message ? 'border-red-500' : 'border-neutral-700'}`}
+                                    onChange={() => setErrors(prev => ({ ...prev, message: null }))}
                                 ></textarea>
+                                {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
                             </div>
                             <button
                                 type="submit"

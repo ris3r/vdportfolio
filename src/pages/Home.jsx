@@ -58,8 +58,8 @@ const Home = () => {
         },
         {
             icon: <Users size={40} className="text-gold" />,
-            title: "Vinith D'costa Financepedia",
-            description: "Dedicated education arm focused on financial literacy and practical skills."
+            title: "VD Financepedia",
+            description: "Specialized entity for training on market software and screeners."
         }
     ];
 
@@ -245,26 +245,50 @@ const Home = () => {
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">Trusted by <span className="text-gold">Elite Traders</span></h2>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {[
-                            { name: "Vikram S.", role: "Pro Trader", quote: "Vinith D'costa & Associates changed my entire perspective on the markets. The mentorship is unmatched." },
-                            { name: "Sarah J.", role: "Investor", quote: "The tools and community support gave me the confidence to trade full-time." },
-                            { name: "Rahul M.", role: "Day Trader", quote: "Finally, a platform that focuses on real education and not just signals." }
+                            {
+                                name: "Abdul Shafwan",
+                                quote: "The expertise, dedication, and personalized guidance have been nothing short of phenomenal. From the start, they went above and beyond to ensure our success, offering invaluable insights and prompt assistance. This organisation truly sets the standard for excellence in support. Highly recommend to anyone looking for top-tier expertise and service!"
+                            },
+                            {
+                                name: "Vaibhav Prabhu",
+                                quote: "I am 20 years old college going student. I had no idea about stock market and how it works. I was introduced to VD & Associates... I opted for Golden mentorship their premium life time membership. Since the day i opted this membership I've been constantly learning and as well as earning at the same time. The calls which VD & Associates team gives are very accurate 💯 Overall loved thier service 💸❤️"
+                            },
+                            {
+                                name: "Prasad Shetty",
+                                quote: "The VD team is simply superb ❤️ What they say is what they do. As a beginner, I struggled to earn even 1–2k, but with Dr. Vinith’s mentorship and guidance, I now confidently earn 3–4k daily on average. His calls have 90%+ accuracy... Thank you so much Dr. VD and Team for your mentorship 🙏❤️"
+                            },
+                            {
+                                name: "Karthik Swami",
+                                quote: "Vinith Dcosta & Associates Trading Academy has helped me become a Professional Trader. I am trading on daily basis with VD Strategies and I am making consistent profits... Your new designed golden SMC software also is amazing with great Positional results 👌. Highly Recommend them to everyone 😊. The Best!"
+                            }
                         ].map((t, i) => (
-                            <div key={i} className="glass-panel p-8 relative bg-gray-light/30">
+                            <div key={i} className="glass-panel p-8 relative bg-gray-light/30 flex flex-col h-full">
                                 <div className="text-4xl text-gold/20 font-serif absolute top-4 left-6">"</div>
-                                <p className="text-gray-300 italic mb-6 relative z-10 pt-4 text-lg">"{t.quote}"</p>
-                                <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 rounded-full bg-gold flex items-center justify-center text-black font-bold text-lg shadow-lg">
+                                <p className="text-gray-300 italic mb-6 relative z-10 pt-4 text-sm md:text-base leading-relaxed flex-grow">"{t.quote}"</p>
+                                <div className="flex items-center gap-4 mt-auto">
+                                    <div className="w-10 h-10 rounded-full bg-gold flex items-center justify-center text-black font-bold text-lg shadow-lg flex-shrink-0">
                                         {t.name.charAt(0)}
                                     </div>
                                     <div>
                                         <div className="text-white font-bold">{t.name}</div>
-                                        <div className="text-gold text-xs uppercase tracking-wider">{t.role}</div>
+                                        <div className="text-gold text-xs uppercase tracking-wider">Client</div>
                                     </div>
                                 </div>
                             </div>
                         ))}
+                    </div>
+
+                    <div className="text-center mt-12">
+                        <a
+                            href="https://www.google.com/search?q=Vinith+Dcosta+%26+Associates+Trading+Academy+reviews&sei=Yt9cabWaNZi-5OUP_MKpgAE"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 text-gold hover:text-white transition-colors border-b border-gold hover:border-white pb-1"
+                        >
+                            See more reviews on Google <TrendingUp size={16} />
+                        </a>
                     </div>
                 </div>
             </section>
@@ -280,7 +304,6 @@ const Home = () => {
                     </div>
                     <div className="flex flex-wrap justify-center gap-8 md:gap-12 opacity-80 hover:opacity-100 transition-opacity duration-300">
                         {[
-                            { icon: <Award size={56} className="text-gold" />, label: "Best EdTech 2024", desc: "Awarded for innovation in financial mentorship." },
                             { icon: <Shield size={56} className="text-gold" />, label: "Most Trusted Firm", desc: "Recognized for transparency and ethical practices." },
                             { icon: <Users size={56} className="text-gold" />, label: "Top Community", desc: "Home to India's most active trading community." }
                         ].map((award, i) => (

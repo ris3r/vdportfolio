@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { X, CheckCircle, AlertCircle, Info } from 'lucide-react';
 
-const Toast = ({ message, type = 'info', onClose }) => {
+const Toast = ({ message, type = 'info', onClose, className }) => {
     useEffect(() => {
         const timer = setTimeout(() => {
             onClose();
@@ -28,8 +28,11 @@ const Toast = ({ message, type = 'info', onClose }) => {
         }
     };
 
+    const baseClasses = `flex items-center gap-3 px-4 py-3 rounded-xl border backdrop-blur-md animate-fade-in shadow-lg ${getColors()}`;
+    const positionClasses = className || "fixed bottom-6 right-6 z-50";
+
     return (
-        <div className={`fixed bottom-6 right-6 z-50 flex items-center gap-3 px-4 py-3 rounded-xl border backdrop-blur-md animate-fade-in shadow-lg ${getColors()}`}>
+        <div className={`${positionClasses} ${baseClasses}`}>
             {getIcon()}
             <p className="text-sm font-medium">{message}</p>
             <button onClick={onClose} className="p-1 hover:bg-white/10 rounded-full transition-colors">

@@ -5,19 +5,19 @@ const FAQSection = ({ data }) => {
     const defaultFaqs = [
         {
             question: "I'm a complete beginner. Which plan is right for me?",
-            answer: "For beginners, we highly recommend 'The Golden Mentorship' or the 'CFO Program'. These bundles include our 'Vinith D'costa Financepedia' module which covers all the fundamentals, tools, and financial literacy basics you need before diving into advanced trading strategies."
+            answer: "We recommend starting with the Premium Mentorship. For more information and personalized guidance, please call or email us at the details provided below."
         },
         {
-            question: "Are you SEBI Registered?",
-            answer: "Yes, Dr. Vinith D'costa is a SEBI-Registered Research Analyst. We operate with full transparency and strictly adhere to compliance norms. We provide educational views and research-backed analysis, not guaranteed 'tips'."
+            question: "How do I access the market insights?",
+            answer: "All actionable calls and market insights are delivered continuously via our exclusive Discord server for real-time access. Important announcements and communications will be shared via our WhatsApp community."
         },
         {
-            question: "What is the difference between Premium and Golden Mentorship?",
-            answer: "Premium Mentorship focuses purely on Trading (Daily Insights, Live Masterclasses, F&O). The Golden Mentorship is a comprehensive bundle that includes EVERYTHING in Premium, PLUS the 'Vinith D'costa Financepedia' (Fundamentals) and exclusive Astro-Prediction software. It's the complete package for serious market mastery."
+            question: "Do you offer a refund policy?",
+            answer: "Our refund policy will be briefed during the onboarding process. For more information, please contact us on the given details below."
         },
         {
-            question: "How do I access the WhatsApp/Discord community?",
-            answer: "Once you enroll in any of our mentorship programs, you will receive an automated email with your login credentials and a private invite link to our exclusive community channels."
+            question: "What tools do I need for trading?",
+            answer: "A mobile phone is sufficient to get started. However, for better clarity and an enhanced experience, having a laptop is an add-on and not mandatory."
         }
     ];
 

@@ -5,6 +5,7 @@ import { useAuth } from '../context/AuthContext';
 const InterestModal = ({ isOpen, onClose, product, isAutoSuccess }) => {
     const { user, register } = useAuth();
     const [step, setStep] = useState(isAutoSuccess ? 'success' : 'form');
+    const [errors, setErrors] = useState({});
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -13,8 +14,32 @@ const InterestModal = ({ isOpen, onClose, product, isAutoSuccess }) => {
 
     if (!isOpen) return null;
 
+    const validateForm = () => {
+        if (user) return true; // Logged in users are pre-validated
+
+        const newErrors = {};
+
+        if (!formData.name.trim()) newErrors.name = "Full Name is required.";
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email)) {
+            newErrors.email = "Please enter a valid email address.";
+        }
+
+        const phoneRegex = /^\+?[0-9]{10,15}$/;
+        if (!phoneRegex.test(formData.phone.replace(/\s/g, ''))) {
+            newErrors.phone = "Please enter a valid phone number (10-15 digits).";
+        }
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!validateForm()) return;
+
         setStep('processing');
 
         // Simulate processing delay
@@ -45,38 +70,47 @@ const InterestModal = ({ isOpen, onClose, product, isAutoSuccess }) => {
                             You are one step away from {product.title}. Complete your details to secure your spot.
                         </p>
 
-                        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                        <form onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
                             {!user && (
                                 <>
                                     <div>
                                         <label className="block text-gray-500 mb-1 text-sm">Full Name</label>
                                         <input
                                             type="text"
-                                            required
                                             value={formData.name}
-                                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                            className="w-full p-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white focus:border-gold focus:outline-none transition-colors"
+                                            onChange={(e) => {
+                                                setFormData({ ...formData, name: e.target.value });
+                                                setErrors(prev => ({ ...prev, name: null }));
+                                            }}
+                                            className={`w-full p-3 bg-neutral-800 border rounded-lg text-white focus:border-gold focus:outline-none transition-colors ${errors.name ? 'border-red-500' : 'border-neutral-700'}`}
                                         />
+                                        {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
                                     </div>
                                     <div>
                                         <label className="block text-gray-500 mb-1 text-sm">Email Address</label>
                                         <input
                                             type="email"
-                                            required
                                             value={formData.email}
-                                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                            className="w-full p-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white focus:border-gold focus:outline-none transition-colors"
+                                            onChange={(e) => {
+                                                setFormData({ ...formData, email: e.target.value });
+                                                setErrors(prev => ({ ...prev, email: null }));
+                                            }}
+                                            className={`w-full p-3 bg-neutral-800 border rounded-lg text-white focus:border-gold focus:outline-none transition-colors ${errors.email ? 'border-red-500' : 'border-neutral-700'}`}
                                         />
+                                        {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
                                     </div>
                                     <div>
                                         <label className="block text-gray-500 mb-1 text-sm">Phone Number</label>
                                         <input
                                             type="tel"
-                                            required
                                             value={formData.phone}
-                                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                                            className="w-full p-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white focus:border-gold focus:outline-none transition-colors"
+                                            onChange={(e) => {
+                                                setFormData({ ...formData, phone: e.target.value });
+                                                setErrors(prev => ({ ...prev, phone: null }));
+                                            }}
+                                            className={`w-full p-3 bg-neutral-800 border rounded-lg text-white focus:border-gold focus:outline-none transition-colors ${errors.phone ? 'border-red-500' : 'border-neutral-700'}`}
                                         />
+                                        {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
                                     </div>
                                 </>
                             )}

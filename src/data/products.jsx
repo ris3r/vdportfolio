@@ -5,33 +5,26 @@ export const products = [
     {
         id: 'golden-mentorship',
         title: "The Golden Mentorship",
-        subtitle: "Collaborating & Bringing You The Ultimate Bundle Offer",
-        hook: "Knowledge. Tools. Growth. Expert Guidance.",
-        description: "A comprehensive bundle combining Vinith D'costa Financepedia's educational rigor with Vinith D'costa & Associates' expert market guidance. The ultimate path to financial mastery.",
+        subtitle: "Collaborative Bundle Offer",
+        hook: "Knowledge. Tools. Growth. Market Guidance.",
+        description: "A comprehensive bundle combining VD Financepedia's educational rigor with Vinith D'costa & Associates' market guidance. The ultimate path to financial mastery.",
         icon: <Award size={50} color="var(--color-gold)" />,
         price: "₹1,53,000",
         originalPrice: "₹2,00,000",
         saveLabel: "25% OFF",
         features: [
-            "Daily Educational Views on Trading",
-            "Weekly Live Demo Trading Sessions",
-            "Astro Prediction Software & Stock Screeners",
-            "Master Prediction Mythology & Financial Astrology",
-            "Stock Views (Short-term, Long-term, Penny Stocks)",
-            "Options & Futures Trading",
-            "Premium Discord Channel Access"
+            "Vinith Dcosta & Associates: Market Analysis, Softwares & Screener, Pre-market discussion",
+            "VD Financepedia: Weekly classes on Tuesdays, Complete training recording of screeners & softwares"
         ],
         details: [
             {
-                title: "Vinith D'costa Financepedia",
+                title: "VD Financepedia",
                 originalPrice: "₹1,30,999",
                 price: "₹1,00,000",
                 items: [
-                    "Daily Educational Views on Trading",
-                    "Weekly Live Demo Trading Sessions for students",
-                    "Astro Prediction Software & Stock Screeners (BTC, FOREX, Indian Market & Commodities)",
-                    "Master Prediction Mythology & Financial Astrology",
-                    "Educational Seminars, Classes & Coaching"
+                    "Weekly once classes on Tuesdays",
+                    "Complete training recording of Screeners & Softwares",
+                    "Educational views on market trends"
                 ]
             },
             {
@@ -40,43 +33,40 @@ export const products = [
                 price: "₹45,000",
                 gst: "+ 18% GST",
                 items: [
-                    "Stock Views: Receive short-term, long-term stock ideas",
-                    "Penny stocks from global and Indian markets on a yearly basis",
-                    "Options & Futures Trading",
-                    "Premium Discord Channel Access"
+                    "Market Analysis",
+                    "Softwares & Screener Access",
+                    "Pre-market discussion"
                 ]
             }
         ],
         renewal: "yearly renewal of 15K + 18% GST",
         landingPage: {
             hero: {
-                headline: "Unlock the Golden Edge: 25% OFF Astro-Powered Trading Mastery",
-                subheadline: "Stop Guessing. Start Dominating. The Ultimate Bundle for Ambitious Traders.",
+                headline: "Unlock the Golden Edge: 25% OFF Market Mastery",
+                subheadline: "Stop Guessing. Start Dominating. The Collaborative Bundle for Serious Traders.",
                 cta: "Get Instant Access",
                 urgency: "Offer Ends in 7 Days – 35/50 Spots Left!"
             },
             painPoints: [
                 { title: "Choppy Signals?", desc: "Stop bleeding capital on lagging indicators." },
                 { title: "Missed Rallies?", desc: "Catch the move before the crowd wakes up." },
-                { title: "Information Overload?", desc: "Cut the noise with precision astro-timing." }
+                { title: "Information Overload?", desc: "Cut the noise with precision market analysis." }
             ],
             valueVault: {
                 vdTools: [
-                    "Daily Educational Views (Spot trends pre-bell)",
-                    "Weekly Live Demos (Real-time execution mastery)",
-                    "Astro Prediction Software (BTC/Forex/Indian/Commodities)",
-                    "Master Financial Astrology (Myth-to-money seminars)"
+                    "Weekly Classes (Tuesdays)",
+                    "Training Recordings (Screeners & Softwares)",
+                    "Educational Rigor"
                 ],
                 vinithExpertise: [
-                    "Yearly Stock Views (Short/Long-term ideas)",
-                    "Penny Stocks (Vetted rockets)",
-                    "Options & Futures Insights (Pro strategies)",
-                    "Premium Discord (VIP alerts & War-room vibes)"
+                    "Market Analysis",
+                    "Softwares & Screeners",
+                    "Pre-market Discussion"
                 ]
             },
             testimonials: [
-                { name: "Raj, Bangalore", quote: "Doubled my Nifty plays—Vinith's pennies are pure alpha!" },
-                { name: "Sarah, Mumbai", quote: "The astro software is like having a cheat code for the markets." },
+                { name: "Raj, Bangalore", quote: "Doubled my Nifty plays—Vinith's analysis is spot on!" },
+                { name: "Sarah, Mumbai", quote: "The screeners are like having a cheat code for the markets." },
                 { name: "Amit, Dubai", quote: "Finally, a mentorship that pays for itself in the first month." }
             ],
             comparison: {
@@ -89,59 +79,56 @@ export const products = [
     {
         id: 'premium-mentorship',
         title: "Premium Mentorship",
-        subtitle: "The Only School That Teaches You To Make Money",
+        subtitle: "Real Time Market Analysis",
         hook: "Unlock Elite Trading Performance",
-        description: "Get exclusive trading views, live masterclasses, and strong equity picks designed to sharpen your skills and build long-term wealth.",
+        description: "Get exclusive trading views and strong equity picks designed to sharpen your skills and build long-term wealth.",
         icon: <TrendingUp size={50} color="var(--color-gold)" />,
         price: "₹62,999",
         period: "/ Yearly",
         features: [
-            "Daily Market Insights (NIFTY & BANKNIFTY)",
-            "Live Trading Masterclass (Every Week)",
+            "Daily Market Insights (NIFTY, BANKNIFTY, SENSEX & STOCK OPTIONS)",
             "Strong Equity Picks for Wealth Creation",
-            "Options & Futures - The Power Play",
+            "Real Time Market Analysis",
             "Minimum Capital Required: ₹10,000 - ₹15,000"
         ],
         details: [
             {
                 title: "What You'll Experience",
                 items: [
-                    "Daily Markets Insights: Exclusive views on Index Options, Stock Options & Futures.",
-                    "Live Trading Masterclass: Weekly live sessions with real-time chart breakdowns.",
-                    "Strong Equity Picks: Build long-term wealth with powerful equity opportunities.",
-                    "Options & Futures: Double your potential returns with smart, structured strategies."
+                    "Daily Markets Insights: Exclusive views on NIFTY, BANKNIFTY, SENSEX & STOCK OPTIONS.",
+                    "Real Time Market Analysis.",
+                    "Strong Equity Picks: Build long-term wealth with powerful equity opportunities."
                 ]
             }
         ],
         landingPage: {
             hero: {
-                headline: "PREMIUM MENTORSHIP: The Only School That Teaches You To Make Money",
-                subheadline: "Daily Insights. Live Masterclasses. Wealth Creation.",
+                headline: "PREMIUM MENTORSHIP: Real Time Market Analysis",
+                subheadline: "Daily Insights. Wealth Creation.",
                 cta: "Join the Elite",
-                urgency: "Limited Spots for Live Sessions"
+                urgency: "Limited Spots Available"
             },
             painPoints: [
                 { title: "Trading Blindly?", desc: "Stop guessing. Get daily expert views on NIFTY & BANKNIFTY." },
-                { title: "Struggling with Timing?", desc: "Master entry and exit with weekly live masterclasses." },
+                { title: "Struggling with Timing?", desc: "Master entry and exit with real time analysis." },
                 { title: "No Wealth Strategy?", desc: "Build a long-term portfolio with strong equity picks." }
             ],
             valueVault: {
                 vdTools: [
                     "Daily Market Insights (Index & Stock Options)",
-                    "Live Trading Masterclass (Weekly Real-time Analysis)",
-                    "Strong Equity Picks (Wealth Creation)",
-                    "Options & Futures Strategies (Power Play)"
+                    "Real Time Analysis",
+                    "Strong Equity Picks (Wealth Creation)"
                 ],
                 vinithExpertise: [
                     "Real-time Chart Breakdowns",
                     "Timing Analysis & Trade Setups",
                     "Smart, Structured Strategies",
-                    "Educational Guidance Only"
+                    "Market Guidance Only"
                 ]
             },
             testimonials: [
-                { name: "Arjun, Delhi", quote: "The live masterclasses changed my entire perspective on market timing." },
-                { name: "Priya, Pune", quote: "Finally profitable thanks to the structured options strategies." },
+                { name: "Arjun, Delhi", quote: "The market analysis changed my entire perspective." },
+                { name: "Priya, Pune", quote: "Finally profitable thanks to the structured strategies." },
                 { name: "Rahul, Hyderabad", quote: "The equity picks are gems. Building real wealth now." }
             ],
             comparison: {
@@ -151,8 +138,7 @@ export const products = [
             },
             pricingTiers: [
                 { plan: "Monthly", price: "₹6,999" },
-                { plan: "Half-Yearly", price: "₹33,999" },
-                { plan: "Yearly", price: "₹62,999" }
+                { plan: "Half-Yearly & Yearly", price: "₹33,999 / ₹62,999" }
             ],
             ctaSection: {
                 headline: "Ready to ",
@@ -160,76 +146,6 @@ export const products = [
                 headlineSuffix: " the Markets?",
                 buttonText: "GET INSTANT ACCESS",
                 subtext: "Markets wait for no one. Claim your edge before the stars realign."
-            }
-        }
-    },
-    {
-        id: 'crypto-code',
-        title: "The Crypto Code | Vinith D'costa",
-        subtitle: "Decode. Invest. Dominate.",
-        hook: "Master the Future of Wealth",
-        description: "Step into the world where finance meets innovation. Learn how to build your crypto fortune with logic, discipline, and mastery.",
-        icon: <Bitcoin size={50} color="var(--color-gold)" />,
-        price: "₹62,999",
-        period: "/ Yearly",
-        features: [
-            "Vinith D'costa is expanding its horizons!",
-            "Build your crypto fortune with logic",
-            "Discipline and Mastery",
-            "Monthly & Half-Yearly Plans Available"
-        ],
-        details: [
-            {
-                title: "Vinith D'costa is Expanding Horizons",
-                items: [
-                    "Step into the world where finance meets innovation.",
-                    "Learn how to build your crypto fortune with logic, discipline, and mastery.",
-                    "Powered by Vinith D'Costa & Associates."
-                ]
-            }
-        ],
-        landingPage: {
-            hero: {
-                headline: "THE CRYPTO CODE: Decode. Invest. Dominate.",
-                subheadline: "Master the Future of Digital Wealth with Logic & Discipline.",
-                cta: "Start Your Journey",
-                urgency: "The Future is Now"
-            },
-            painPoints: [
-                { title: "Confused by Crypto?", desc: "Decode the market with logic, not hype." },
-                { title: "Fear of Volatility?", desc: "Learn to dominate with discipline and mastery." },
-                { title: "Missing the Next Big Thing?", desc: "Step into the world where finance meets innovation." }
-            ],
-            valueVault: {
-                vdTools: [
-                    "Crypto Market Logic & Analysis",
-                    "Discipline & Mastery Training",
-                    "Future of Digital Wealth Strategies",
-                    "Innovation Meets Finance"
-                ],
-                vinithExpertise: [
-                    "Powered by Vinith D'Costa & Associates",
-                    "Building Crypto Fortunes",
-                    "Strategic Investment Planning",
-                    "Risk Management in Crypto"
-                ]
-            },
-            testimonials: [
-                { name: "Vikram, Bangalore", quote: "Demystified crypto for me. No more FOMO, just logic." },
-                { name: "Sneha, Mumbai", quote: "The discipline taught here saved me from major crashes." },
-                { name: "Rohan, Delhi", quote: "Building a solid crypto portfolio for the long run." }
-            ],
-            comparison: {
-                originalTotal: "₹75,000",
-                bundlePrice: "₹62,999",
-                saveAmount: "₹12,001"
-            },
-            ctaSection: {
-                headline: "Ready to ",
-                highlight: "Decode",
-                headlineSuffix: " the Future?",
-                buttonText: "GET INSTANT ACCESS",
-                subtext: "The next bull run is starting. Don't get left behind."
             }
         }
     },
@@ -253,7 +169,7 @@ export const products = [
         ],
         details: [
             {
-                title: "Vinith D'costa Financepedia",
+                title: "VD Financepedia",
                 originalPrice: "₹1,30,999",
                 items: [
                     "Fundamental & Tool Training - Spot strong companies, use screeners.",

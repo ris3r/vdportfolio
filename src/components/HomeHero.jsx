@@ -79,9 +79,9 @@ const HomeHero = () => {
 
                 {/* Subheadline */}
                 <p className="animate-fade-in text-gray-300 text-lg md:text-xl max-w-3xl mx-auto mb-12 leading-relaxed">
-                    <span className="block text-white font-bold mb-2 text-2xl">Welcome to your new unfair advantage.</span>
+                    <span className="block text-white font-bold mb-2 text-2xl">Welcome to your market advantage.</span>
                     We combine the precision of <span className="text-gold font-semibold">Data Science</span> with the foresight of <span className="text-gold font-semibold">Financial Astrology</span>.
-                    The result? You don't just survive the market, you master it.
+                    The result? You navigate the market with confidence and clarity.
                 </p>
 
                 {/* Bullet Triad */}
@@ -90,11 +90,11 @@ const HomeHero = () => {
                         {
                             icon: <TrendingUp size={32} className="text-gold" />,
                             title: "Precision Intelligence",
-                            desc: "Institutional-grade analysis & backtested wins."
+                            desc: "Institutional-grade analysis."
                         },
                         {
                             icon: <Globe size={32} className="text-gold" />,
-                            title: "Actionable Education",
+                            title: "Real Time Market Analysis",
                             desc: "Real-world skills from beginner to pro astro-predictions."
                         },
                         {
@@ -118,7 +118,7 @@ const HomeHero = () => {
                 {/* CTA Stack */}
                 <div className="animate-fade-in flex flex-col md:flex-row gap-6 justify-center items-center mb-16">
                     <Link to="/services" className="btn-primary text-lg px-10 py-4 shadow-gold-glow hover:scale-105 whitespace-nowrap flex items-center">
-                        Dive into Mentorship <ArrowRight size={20} className="ml-2 flex-shrink-0" />
+                        Explore Mentorship <ArrowRight size={20} className="ml-2 flex-shrink-0" />
                     </Link>
                     <Link to="/contact" className="px-10 py-4 text-lg border border-teal-500/50 text-teal-400 bg-teal-900/10 rounded-full hover:bg-teal-900/30 hover:shadow-[0_0_20px_rgba(45,212,191,0.3)] transition-all duration-300 flex items-center">
                         Request Custom Insights

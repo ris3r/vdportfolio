@@ -274,7 +274,7 @@ const ProductDetail = () => {
                         <div className="container px-4">
                             <div className="text-center mb-16 animate-section">
                                 <h2 className="text-3xl md:text-5xl font-heading font-bold mb-6 text-white">
-                                    From Market Mayhem to <span className="text-gold">Multiplier Wins</span>
+                                    From Market Chaos to <span className="text-gold">Strategic Gains</span>
                                 </h2>
                                 <p className="text-gray-400 max-w-2xl mx-auto text-lg">
                                     Stop letting the market control you. It's time to take charge with data, astrology, and expert guidance.
