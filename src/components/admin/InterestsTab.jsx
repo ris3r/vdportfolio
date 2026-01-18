@@ -17,7 +17,14 @@ const InterestsTab = ({ interests, toggleMessageStatus, confirmDeleteSubmission,
                 <tbody className="divide-y divide-white/5">
                     {interests.map(item => (
                         <tr key={item.id} className={`hover:bg-white/5 transition-colors ${item.status === 'unread' ? 'bg-gold/5' : ''}`}>
-                            <td className="p-6 font-medium text-gold">{item.productTitle}</td>
+                            <td className="p-6">
+                                <div className="font-medium text-gold">{item.productTitle}</div>
+                                {item.selectedPlan && (
+                                    <div className="text-xs text-white/70 mt-1 bg-white/10 inline-block px-2 py-1 rounded">
+                                        {item.selectedPlan.plan} - {item.selectedPlan.price}
+                                    </div>
+                                )}
+                            </td>
                             <td className="p-6">
                                 <div className="text-white">{item.user?.name}</div>
                                 <div className="text-sm text-gray-500">{item.user?.email}</div>

@@ -102,7 +102,7 @@ const About = () => {
                                 <li>Padua</li>
                                 <li>Yenepoya</li>
                                 <li>St. Agnes</li>
-                                <li>Alvas</li>
+                                <li>Alva's</li>
                                 <li>St. Joseph Engineering College Mangalore</li>
                             </ul>
 

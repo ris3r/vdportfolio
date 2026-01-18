@@ -39,7 +39,7 @@ const Services = () => {
             subtitle: "Collaborative Bundle Offer",
             price: "₹1,53,000",
             features: [
-                "Vinith Dcosta & Associates: Market Analysis, Softwares & Screener",
+                "Vinith D'costa & Associates: Market Analysis, Software & Screener",
                 "VD Financepedia: Weekly Classes (Tuesdays)",
                 "Complete Training Recording of Screeners",
                 "Educational Views on Market Trends",
@@ -53,8 +53,9 @@ const Services = () => {
             subtitle: "Real Time Market Analysis",
             price: (
                 <div className="flex flex-col">
-                    <span>Starts @ ₹6,999/mo</span>
-                    <span className="text-base text-gray-400 mt-1 font-normal">Yearly Plan: ₹62,999</span>
+                    <span className="text-xl">Monthly: ₹6,000 <span className="text-sm text-gold/70">+ 18% GST</span></span>
+                    <span className="text-lg text-gray-300 font-normal mt-1">Half Yearly: ₹30,000 <span className="text-xs text-gray-500">+ 18% GST</span></span>
+                    <span className="text-lg text-gray-300 font-normal">Yearly: ₹50,000 <span className="text-xs text-gray-500">+ 18% GST</span></span>
                 </div>
             ),
             features: [

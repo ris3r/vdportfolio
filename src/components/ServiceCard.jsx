@@ -61,11 +61,11 @@ const ServiceCard = ({ id, title, price, features, isPopular, subtitle }) => {
             <Link
                 to={`/product/${id}`}
                 className={`w-full py-3 rounded-xl text-center font-semibold transition-all duration-300 ${isPopular
-                        ? 'bg-gold text-black hover:bg-yellow-400 hover:shadow-[0_0_20px_rgba(255,215,0,0.3)]'
-                        : 'border border-white/20 text-white hover:border-gold hover:text-gold'
+                    ? 'bg-gold text-black hover:bg-yellow-400 hover:shadow-[0_0_20px_rgba(255,215,0,0.3)]'
+                    : 'border border-white/20 text-white hover:border-gold hover:text-gold'
                     }`}
             >
-                View Plan Details
+                View Details & Register
             </Link>
         </div>
     );

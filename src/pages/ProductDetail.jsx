@@ -20,6 +20,13 @@ const ProductDetail = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [interestStatus, setInterestStatus] = useState(null);
     const [showPhonePrompt, setShowPhonePrompt] = useState(false);
+    const [selectedPlan, setSelectedPlan] = useState(product?.pricingTiers?.[0] || null);
+
+    useEffect(() => {
+        if (product?.pricingTiers) {
+            setSelectedPlan(product.pricingTiers[0]);
+        }
+    }, [product]);
 
     // Simple inline Phone Prompt Modal Component
     const PhonePromptModal = () => {
@@ -113,6 +120,7 @@ const ProductDetail = () => {
             await addDoc(collection(db, 'interests'), {
                 productId: product.id,
                 productTitle: product.title,
+                selectedPlan: selectedPlan ? selectedPlan : null, // Store selected plan
                 user: {
                     name: user.name || user.email.split('@')[0],
                     email: user.email,
@@ -449,11 +457,13 @@ const ProductDetail = () => {
                                 </div>
                             </div>
 
+
+
                             <button
-                                onClick={handleInterestClick}
+                                onClick={() => handleInterestClick(false)}
                                 className="hero-text-anim px-10 py-4 bg-gold text-black text-lg font-bold rounded-full hover:bg-yellow-400 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,215,0,0.3)] transition-all duration-300"
                             >
-                                {product.landingPage?.hero.cta || "Secure My Spot"}
+                                {product.landingPage?.hero.cta || "Register Interest"}
                             </button>
                         </div>
                     </section>
@@ -480,17 +490,56 @@ const ProductDetail = () => {
                                 </div>
 
                                 <div className="animate-section glass-panel p-10 text-center border-gold/20">
-                                    <p className="text-gray-400 text-sm uppercase tracking-widest mb-4">Investment</p>
-                                    <p className="text-6xl font-heading font-bold text-gold mb-4">
-                                        {product.price}
-                                    </p>
-                                    {product.period && <p className="text-gray-500 mb-8">{product.period}</p>}
+                                    {product.pricingTiers ? (
+                                        <div className="mb-8 w-full">
+                                            {/* Custom Dropdown Styling */}
+                                            <div className="relative max-w-sm mx-auto mb-6">
+                                                <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+                                                    <Award size={20} className="text-gold" />
+                                                </div>
+                                                <select
+                                                    value={selectedPlan?.plan || ''}
+                                                    onChange={(e) => {
+                                                        const plan = product.pricingTiers.find(p => p.plan === e.target.value);
+                                                        setSelectedPlan(plan);
+                                                    }}
+                                                    className="w-full bg-black/40 border border-gold/30 text-white text-lg rounded-xl pl-12 pr-6 py-4 appearance-none focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all cursor-pointer hover:bg-black/60"
+                                                    style={{ backgroundImage: 'none' }} // Remove default arrow if needed or use custom
+                                                >
+                                                    {product.pricingTiers.map((tier, index) => (
+                                                        <option key={index} value={tier.plan} className="bg-neutral-900 text-white py-2">
+                                                            {tier.plan}
+                                                        </option>
+                                                    ))}
+                                                </select>
+                                                {/* Custom Arrow */}
+                                                <div className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
+                                                    <TrendingUp size={16} className="text-gray-400" />
+                                                </div>
+                                            </div>
+
+                                            <div className="animate-fade-in space-y-2">
+                                                <p className="text-gray-400 text-sm uppercase tracking-widest">Total Investment</p>
+                                                <p className="text-5xl md:text-6xl font-heading font-bold text-gold drop-shadow-[0_0_15px_rgba(255,215,0,0.3)]">
+                                                    {selectedPlan?.price}
+                                                </p>
+                                                <p className="text-gray-500 text-sm italic font-medium">
+                                                    (Inclusive of 18% GST)
+                                                </p>
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <p className="text-6xl font-heading font-bold text-gold mb-4">
+                                            {product.price}
+                                        </p>
+                                    )}
+                                    {product.period && !product.pricingTiers && <p className="text-gray-500 mb-8">{product.period}</p>}
 
                                     <button
                                         onClick={handleInterestClick}
                                         className="w-full py-4 bg-gold text-black font-bold rounded-xl hover:bg-yellow-400 transition-all"
                                     >
-                                        Get Started Now
+                                        Register Interest
                                     </button>
                                 </div>
                             </div>

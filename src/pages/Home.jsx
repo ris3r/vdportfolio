@@ -119,7 +119,7 @@ const Home = () => {
                                 With a track record of mentoring 1,500+ students worldwide, VD bridges academic rigor with actionable market practice.
                             </p>
                             <p className="text-gray-muted mb-8 text-lg leading-relaxed">
-                                He has conducted workshops in top colleges like <strong>Padua, Yenepoya, St. Agnes, Alvas, and St. Joseph Engineering College Mangalore</strong>.
+                                He has conducted workshops in top colleges like <strong>Padua, Yenepoya, St. Agnes, Alva's, and St. Joseph Engineering College, Mangalore</strong>.
                                 <br /><br />
                                 Beyond academia, he has led private Trading Workshops in <strong>Dubai, Bangalore, Goa & Mangalore</strong>.
                             </p>
@@ -253,7 +253,7 @@ const Home = () => {
                             },
                             {
                                 name: "Vaibhav Prabhu",
-                                quote: "I am 20 years old college going student. I had no idea about stock market and how it works. I was introduced to VD & Associates... I opted for Golden mentorship their premium life time membership. Since the day i opted this membership I've been constantly learning and as well as earning at the same time. The calls which VD & Associates team gives are very accurate 💯 Overall loved thier service 💸❤️"
+                                quote: "I am 20 years old college going student. I had no idea about stock market and how it works. I was introduced to VD & Associates... I opted for Golden mentorship their premium life time membership. Since the day i opted this membership I've been constantly learning and as well as earning at the same time. The calls which VD & Associates team gives are very accurate 💯 Overall loved their service 💸❤️"
                             },
                             {
                                 name: "Prasad Shetty",
@@ -261,7 +261,7 @@ const Home = () => {
                             },
                             {
                                 name: "Karthik Swami",
-                                quote: "Vinith Dcosta & Associates Trading Academy has helped me become a Professional Trader. I am trading on daily basis with VD Strategies and I am making consistent profits... Your new designed golden SMC software also is amazing with great Positional results 👌. Highly Recommend them to everyone 😊. The Best!"
+                                quote: "Vinith D'costa & Associates Trading Academy has helped me become a Professional Trader. I am trading on daily basis with VD Strategies and I am making consistent profits... Your new designed golden SMC software also is amazing with great Positional results 👌. Highly Recommend them to everyone 😊. The Best!"
                             }
                         ].map((t, i) => (
                             <div key={i} className="glass-panel p-8 relative bg-gray-light/30 flex flex-col h-full">

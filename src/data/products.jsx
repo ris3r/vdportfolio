@@ -13,8 +13,8 @@ export const products = [
         originalPrice: "₹2,00,000",
         saveLabel: "25% OFF",
         features: [
-            "Vinith Dcosta & Associates: Market Analysis, Softwares & Screener, Pre-market discussion",
-            "VD Financepedia: Weekly classes on Tuesdays, Complete training recording of screeners & softwares"
+            "Vinith D'costa & Associates: Market Analysis, Software & Screener, Pre-market discussion",
+            "VD Financepedia: Weekly classes on Tuesdays, Complete training recording of screeners & software"
         ],
         details: [
             {
@@ -23,7 +23,7 @@ export const products = [
                 price: "₹1,00,000",
                 items: [
                     "Weekly once classes on Tuesdays",
-                    "Complete training recording of Screeners & Softwares",
+                    "Complete training recording of Screeners & Software",
                     "Educational views on market trends"
                 ]
             },
@@ -34,7 +34,7 @@ export const products = [
                 gst: "+ 18% GST",
                 items: [
                     "Market Analysis",
-                    "Softwares & Screener Access",
+                    "Software & Screener Access",
                     "Pre-market discussion"
                 ]
             }
@@ -44,7 +44,7 @@ export const products = [
             hero: {
                 headline: "Unlock the Golden Edge: 25% OFF Market Mastery",
                 subheadline: "Stop Guessing. Start Dominating. The Collaborative Bundle for Serious Traders.",
-                cta: "Get Instant Access",
+                cta: "Register Interest",
                 urgency: "Offer Ends in 7 Days – 35/50 Spots Left!"
             },
             painPoints: [
@@ -55,12 +55,12 @@ export const products = [
             valueVault: {
                 vdTools: [
                     "Weekly Classes (Tuesdays)",
-                    "Training Recordings (Screeners & Softwares)",
+                    "Training Recordings (Screeners & Software)",
                     "Educational Rigor"
                 ],
                 vinithExpertise: [
                     "Market Analysis",
-                    "Softwares & Screeners",
+                    "Software & Screeners",
                     "Pre-market Discussion"
                 ]
             },
@@ -83,13 +83,18 @@ export const products = [
         hook: "Unlock Elite Trading Performance",
         description: "Get exclusive trading views and strong equity picks designed to sharpen your skills and build long-term wealth.",
         icon: <TrendingUp size={50} color="var(--color-gold)" />,
-        price: "₹62,999",
+        price: "₹59,000 (Inc. GST)",
         period: "/ Yearly",
         features: [
             "Daily Market Insights (NIFTY, BANKNIFTY, SENSEX & STOCK OPTIONS)",
             "Strong Equity Picks for Wealth Creation",
             "Real Time Market Analysis",
             "Minimum Capital Required: ₹10,000 - ₹15,000"
+        ],
+        pricingTiers: [
+            { plan: "Monthly", price: "₹7,080", note: "(₹6,000 + 18% GST)" },
+            { plan: "Half-Yearly", price: "₹35,400", note: "(₹30,000 + 18% GST)" },
+            { plan: "Yearly", price: "₹59,000", note: "(₹50,000 + 18% GST)" }
         ],
         details: [
             {
@@ -105,7 +110,7 @@ export const products = [
             hero: {
                 headline: "PREMIUM MENTORSHIP: Real Time Market Analysis",
                 subheadline: "Daily Insights. Wealth Creation.",
-                cta: "Join the Elite",
+                cta: "Register Interest",
                 urgency: "Limited Spots Available"
             },
             painPoints: [
@@ -133,18 +138,15 @@ export const products = [
             ],
             comparison: {
                 originalTotal: "₹75,000",
-                bundlePrice: "₹62,999",
-                saveAmount: "₹12,001"
+                bundlePrice: "₹59,000 (Inc. GST)",
+                saveAmount: "₹25,000"
             },
-            pricingTiers: [
-                { plan: "Monthly", price: "₹6,999" },
-                { plan: "Half-Yearly & Yearly", price: "₹33,999 / ₹62,999" }
-            ],
+
             ctaSection: {
                 headline: "Ready to ",
                 highlight: "Dominate",
                 headlineSuffix: " the Markets?",
-                buttonText: "GET INSTANT ACCESS",
+                buttonText: "REGISTER INTEREST",
                 subtext: "Markets wait for no one. Claim your edge before the stars realign."
             }
         }
@@ -152,7 +154,7 @@ export const products = [
     {
         id: 'cfo-program',
         title: "Personal Finance CFO Program",
-        subtitle: "Construct and Manage Wealth Focused Portfolios",
+        subtitle: "Construct and Manage Wealth-Focused Portfolios",
         hook: "Your Personal Roadmap to Financial Freedom",
         description: "A bundle offer combining Fundamental & Tool Training with expert Stock & Mutual Fund picks. Manage your wealth like a CFO.",
         icon: <PieChart size={50} color="var(--color-gold)" />,
@@ -174,7 +176,7 @@ export const products = [
                 items: [
                     "Fundamental & Tool Training - Spot strong companies, use screeners.",
                     "Market Insights - Weekly updates on macro, micro, & global trends.",
-                    "Portfolio & Risk Skills - Construct and manage wealth focused Portfolio.",
+                    "Portfolio & Risk Skills - Construct and manage wealth-focused Portfolio.",
                     "Smart Money Hacks - EMI, tax, credit & expense strategies.",
                     "Psychology & Discipline - Fear out, clarity in."
                 ]
@@ -193,8 +195,8 @@ export const products = [
         landingPage: {
             hero: {
                 headline: "PERSONAL FINANCE CFO PROGRAM: Your Roadmap to Financial Freedom",
-                subheadline: "Construct and Manage Wealth Focused Portfolios like a Pro.",
-                cta: "Become Your Own CFO",
+                subheadline: "Construct and Manage Wealth-Focused Portfolios like a Pro.",
+                cta: "Register Interest",
                 urgency: "25% OFF Bundle Offer"
             },
             painPoints: [

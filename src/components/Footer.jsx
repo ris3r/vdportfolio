@@ -18,7 +18,7 @@ const Footer = () => {
                         <p style={{ color: '#aaa', marginBottom: '20px', lineHeight: '1.8' }}>
                             SEBI-registered Stock Market Research & Analysis firm delivering transparent, data-driven market intelligence.
                             <br />
-                            <strong style={{ color: 'var(--color-gold)', display: 'inline-block', marginTop: '10px' }}>SEBI LICENCE NUMBER: INH000022367</strong>
+                            <strong style={{ color: 'var(--color-gold)', display: 'inline-block', marginTop: '10px' }}>SEBI LICENSE NUMBER: INH000022367</strong>
                         </p>
                         <div style={{ display: 'flex', gap: '15px' }}>
                             <a href="https://www.facebook.com/profile.php?id=61562042187078" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gold transition-colors"><Facebook size={20} /></a>
