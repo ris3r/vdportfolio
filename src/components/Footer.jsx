@@ -58,7 +58,7 @@ const Footer = () => {
                                 </a>
                             </li>
                             <li>
-                                <a href="https://www.google.com/search?q=Vinith+Dcosta+%26+Associates+Trading+Academy+reviews&sei=Yt9cabWaNZi-5OUP_MKpgAE" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#aaa', textDecoration: 'none', transition: 'color 0.3s' }} className="hover:text-gold">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Vinith+Dcosta+%26+Associates+Trading+Academy" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#aaa', textDecoration: 'none', transition: 'color 0.3s' }} className="hover:text-gold">
                                     <MapPin size={18} color="var(--color-gold)" />
                                     <span>Karnataka, India</span>
                                 </a>

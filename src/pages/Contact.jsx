@@ -90,7 +90,7 @@ const Contact = () => {
                                 },
                                 {
                                     icon: MapPin, title: "Visit Us", content: "Karnataka, India",
-                                    link: "https://www.google.com/search?q=Vinith+Dcosta+%26+Associates+Trading+Academy+reviews&sei=Yt9cabWaNZi-5OUP_MKpgAE", isExternal: true
+                                    link: "https://www.google.com/maps/search/?api=1&query=Vinith+Dcosta+%26+Associates+Trading+Academy", isExternal: true
                                 }
                             ].map((item, index) => (
                                 <a
