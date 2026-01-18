@@ -46,6 +46,7 @@ export const AuthProvider = ({ children }) => {
                     console.log("AuthStateChanged: User detected", currentUser.uid);
 
                     // Critical Security Check: Ensure email is verified before allowing access
+                    // Critical Security Check: Ensure email is verified before allowing access
                     if (!currentUser.emailVerified) {
                         console.warn("User email not verified. Forcing sign-out.");
                         await signOut(auth);
@@ -141,6 +142,7 @@ export const AuthProvider = ({ children }) => {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const currentUser = userCredential.user;
 
+        // 1. Check for Email Verification
         // 1. Check for Email Verification
         if (!currentUser.emailVerified) {
             await signOut(auth);

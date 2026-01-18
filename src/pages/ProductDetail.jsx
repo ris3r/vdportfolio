@@ -5,7 +5,7 @@ import { Check, ArrowRight, Shield, Users, TrendingUp, Award, Star, X } from 'lu
 import InterestModal from '../components/InterestModal';
 import { useAuth } from '../context/AuthContext';
 import { db } from '../firebase';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, query, where, getDocs } from 'firebase/firestore';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
@@ -97,6 +97,19 @@ const ProductDetail = () => {
 
         // Auto-submit for logged-in users
         try {
+            // Check for duplicates
+            const q = query(
+                collection(db, 'interests'),
+                where('user.uid', '==', user.uid),
+                where('productId', '==', product.id)
+            );
+            const querySnapshot = await getDocs(q);
+
+            if (!querySnapshot.empty) {
+                alert("You have already registered your interest for this product.");
+                return;
+            }
+
             await addDoc(collection(db, 'interests'), {
                 productId: product.id,
                 productTitle: product.title,

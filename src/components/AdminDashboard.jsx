@@ -358,7 +358,7 @@ const AdminDashboard = () => {
                 </div>
 
                 {/* Filters (Only for Interests/Contacts) */}
-                {activeTab !== 'users' && (
+                {activeTab !== 'users' && activeTab !== 'compliance' && (
                     <div className="flex flex-wrap gap-4 mb-6">
                         <div className="bg-neutral-900 border border-white/10 rounded-lg p-1 flex items-center">
                             <button onClick={() => setFilter('all')} className={`px-4 py-2 rounded-md text-sm transition-colors ${filter === 'all' ? 'bg-white/10 text-white' : 'text-gray-400 hover:text-white'}`}>All Time</button>

@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import Navbar from './components/Navbar';
+import ScrollToTop from './components/ScrollToTop';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -16,7 +17,7 @@ import Compliance from './pages/Compliance';
 import Settings from './pages/Settings';
 import NotFound from './pages/NotFound';
 import ErrorBoundary from './components/ErrorBoundary';
-import ScrollToTop from './components/ScrollToTop';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
     return (
@@ -35,11 +36,17 @@ function App() {
                             <Route path="/login" element={<Login />} />
                             <Route path="/register" element={<Register />} />
                             <Route path="/dashboard" element={
-                                <ErrorBoundary>
-                                    <Dashboard />
-                                </ErrorBoundary>
+                                <ProtectedRoute>
+                                    <ErrorBoundary>
+                                        <Dashboard />
+                                    </ErrorBoundary>
+                                </ProtectedRoute>
                             } />
-                            <Route path="/settings" element={<Settings />} />
+                            <Route path="/settings" element={
+                                <ProtectedRoute>
+                                    <Settings />
+                                </ProtectedRoute>
+                            } />
                             <Route path="/product/:id" element={<ProductDetail />} />
                             <Route path="*" element={<NotFound />} />
                         </Routes>

@@ -95,6 +95,8 @@ const Settings = () => {
         }
     };
 
+    if (loading && !user) return <div className="min-h-screen bg-black flex items-center justify-center text-gold">Loading...</div>;
+
     return (
         <div className="min-h-screen bg-black text-white font-main pt-32 pb-20">
             <div className="container px-4 max-w-4xl mx-auto">

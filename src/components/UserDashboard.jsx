@@ -1,28 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PlayCircle, Lock, Shield, Key } from 'lucide-react';
 import Button from './Button';
 import { useAuth } from '../context/AuthContext';
+import { db } from '../firebase';
+import { collection, query, where, onSnapshot } from 'firebase/firestore';
 
 const UserDashboard = ({ user }) => {
-    const [myCourses, setMyCourses] = useState([
-        { id: 1, title: 'Options Trading Mastery', progress: 35, totalLessons: 24, completedLessons: 8 },
-    ]);
+    const [interests, setInterests] = useState([]);
+    const [loadingInterests, setLoadingInterests] = useState(true);
 
-    const availableCourses = [
-        { id: 2, title: 'Technical Analysis 101', price: '₹45,000' },
-        { id: 3, title: 'Crypto Fundamentals', price: '₹62,999' },
-    ];
-
-    const handleBuyCourse = (course) => {
-        const newCourse = {
-            id: course.id,
-            title: course.title,
-            progress: 0,
-            totalLessons: 15, // Mock data
-            completedLessons: 0
-        };
-        setMyCourses([...myCourses, newCourse]);
-    };
+    useEffect(() => {
+        if (user?.uid) {
+            const q = query(
+                collection(db, 'interests'),
+                where('user.uid', '==', user.uid)
+            );
+            const unsubscribe = onSnapshot(q, (snapshot) => {
+                const fetchedInterests = snapshot.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }));
+                // Sort by date desc
+                fetchedInterests.sort((a, b) => new Date(b.date) - new Date(a.date));
+                setInterests(fetchedInterests);
+                setLoadingInterests(false);
+            }, (error) => {
+                console.error("Error fetching user interests:", error);
+                setLoadingInterests(false);
+            });
+            return () => unsubscribe();
+        }
+    }, [user]);
 
     const { updateProfile } = useAuth();
     const [newPassword, setNewPassword] = useState('');
@@ -53,40 +61,45 @@ const UserDashboard = ({ user }) => {
                 <p className="text-gray-400">Continue your learning journey</p>
             </div>
 
-            <h2 className="text-2xl font-bold text-white mb-6">My Courses</h2>
+            <h2 className="text-2xl font-bold text-white mb-6">My Applications & Interests</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                {myCourses.map(course => (
-                    <div key={course.id} className="glass-panel p-8 hover:-translate-y-1 transition-transform duration-300">
-                        <div className="mb-6">
-                            <h3 className="text-xl font-bold text-white mb-2">{course.title}</h3>
-                            <div className="flex justify-between text-gray-400 text-sm mb-3">
-                                <span>{course.completedLessons}/{course.totalLessons} Lessons</span>
-                                <span>{course.progress}%</span>
-                            </div>
-                            <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
-                                <div className="h-full bg-gold rounded-full" style={{ width: `${course.progress}%` }}></div>
-                            </div>
-                        </div>
-                        <Button variant="primary" className="w-full justify-center">
-                            <PlayCircle size={18} /> Continue Learning
-                        </Button>
-                    </div>
-                ))}
-            </div>
+                {loadingInterests ? (
+                    <div className="text-gray-400 col-span-full">Loading your applications...</div>
+                ) : interests.length > 0 ? (
+                    interests.map(interest => (
+                        <div key={interest.id} className="glass-panel p-6 hover:-translate-y-1 transition-transform duration-300 border border-white/10 relative overflow-hidden">
+                            {/* Status Indicator Line */}
+                            <div className={`absolute top-0 left-0 w-1 h-full ${interest.status === 'replied' ? 'bg-green-500' : 'bg-gold'}`}></div>
 
-            <h2 className="text-2xl font-bold text-white mb-6">Available Courses</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {availableCourses.filter(c => !myCourses.find(mc => mc.id === c.id)).map(course => (
-                    <div key={course.id} className="glass-panel p-8 bg-neutral-900/40 border-white/5 opacity-80 hover:opacity-100 hover:border-gold/30 transition-all duration-300">
-                        <div className="mb-6">
-                            <h3 className="text-xl font-bold text-white mb-2">{course.title}</h3>
-                            <p className="text-2xl font-bold text-gold">{course.price}</p>
+                            <div className="mb-4 pl-4">
+                                <h3 className="text-lg font-bold text-white mb-1">{interest.productTitle}</h3>
+                                <p className="text-gray-500 text-xs mb-3">Submitted on {new Date(interest.date).toLocaleDateString()}</p>
+
+                                <div className={`inline-flex items-center px-2 py-1 rounded-md text-xs font-medium border ${interest.status === 'replied'
+                                        ? 'bg-green-500/10 text-green-400 border-green-500/20'
+                                        : 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20'
+                                    }`}>
+                                    {interest.status === 'replied' ? 'Replied / Completed' : 'Pending Review'}
+                                </div>
+                            </div>
+
+                            <div className="pl-4">
+                                {interest.status === 'replied' ? (
+                                    <p className="text-sm text-gray-400">Our team has processed your request. Please check your email or messages for next steps.</p>
+                                ) : (
+                                    <p className="text-sm text-gray-400">Thank you for your interest. Our team will contact you shortly.</p>
+                                )}
+                            </div>
                         </div>
-                        <Button variant="outline" onClick={() => handleBuyCourse(course)} className="w-full justify-center">
-                            <Lock size={18} /> Unlock Course
+                    ))
+                ) : (
+                    <div className="col-span-full bg-neutral-900/50 border border-white/5 rounded-xl p-8 text-center">
+                        <p className="text-gray-400 mb-4">You haven't applied for any courses yet.</p>
+                        <Button variant="primary" onClick={() => window.location.href = '/#services'}>
+                            <PlayCircle size={18} className="mr-2" /> Explore Courses
                         </Button>
                     </div>
-                ))}
+                )}
             </div>
 
             {/* Profile Settings */}
