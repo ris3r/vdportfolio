@@ -18,6 +18,7 @@ import Settings from './pages/Settings';
 import NotFound from './pages/NotFound';
 import ErrorBoundary from './components/ErrorBoundary';
 import ProtectedRoute from './components/ProtectedRoute';
+import DiscordPromoModal from './components/DiscordPromoModal';
 
 function App() {
     return (
@@ -26,6 +27,7 @@ function App() {
                 <ScrollToTop />
                 <div className="min-h-screen flex flex-col bg-black">
                     <Navbar />
+                    <DiscordPromoModal />
                     <main className="flex-1">
                         <Routes>
                             <Route path="/" element={<Home />} />

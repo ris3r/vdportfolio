@@ -255,38 +255,7 @@ const ProductDetail = () => {
                                 </div>
                             </div>
 
-                            {/* Glass CTA Card */}
-                            <div className="hero-text-anim glass-panel mx-auto max-w-4xl p-10 md:p-16 relative overflow-hidden group">
-                                <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent pointer-events-none"></div>
 
-                                <span className="inline-block bg-gold text-black px-4 py-1 rounded-full font-bold text-xs uppercase mb-6 tracking-wide">
-                                    Limited Time Bundle Offer
-                                </span>
-
-                                <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-6 uppercase">
-                                    Unlock The <span className="text-gold">Golden Edge</span>
-                                </h2>
-
-                                <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-10">
-                                    Stop Guessing. Start Dominating. <br />
-                                    <span className="text-gold">The Ultimate Bundle for Ambitious Traders.</span>
-                                </p>
-
-                                <div className="flex justify-center mb-10">
-                                    <div className="bg-gold/5 border border-gold/20 px-6 py-2 rounded-full text-gold font-semibold shadow-[0_0_20px_rgba(255,215,0,0.1)]">
-                                        {product.landingPage.hero.urgency}
-                                    </div>
-                                </div>
-
-
-
-                                <button
-                                    onClick={() => handleInterestClick(false)}
-                                    className="relative z-10 px-10 py-5 bg-gold text-black text-xl font-bold rounded-full hover:bg-yellow-400 hover:scale-105 hover:shadow-[0_0_40px_rgba(255,215,0,0.4)] transition-all duration-300"
-                                >
-                                    {product.landingPage.hero.cta}
-                                </button>
-                            </div>
                         </div>
                     </section >
 
@@ -364,61 +333,76 @@ const ProductDetail = () => {
                     </section >
 
                     {/* 4. Pricing / Offer */}
-                    < section className="py-24 bg-neutral-900/10 mb-20" >
+                    < section className="py-12 bg-neutral-900/10 mb-12 flex items-center justify-center min-h-[70vh]" >
                         <div className="container px-4">
-                            <h2 className="text-3xl md:text-5xl font-heading font-bold text-center mb-12 text-white">
+                            <h2 className="text-2xl md:text-4xl font-heading font-bold text-center mb-8 text-white">
                                 Why This is Your <span className="text-gold">No-Brainer Launchpad</span>
                             </h2>
 
-                            <div className="glass-panel max-w-2xl mx-auto p-0 overflow-hidden relative transform hover:scale-[1.01] transition-transform duration-500 animate-section border-gold/30 shadow-[0_0_60px_rgba(255,215,0,0.1)]">
-                                <div className="bg-gold text-black font-black text-center py-3 uppercase tracking-widest text-sm shadow-lg">
+                            <div className="glass-panel max-w-5xl mx-auto p-0 overflow-hidden relative transform hover:scale-[1.01] transition-transform duration-500 animate-section border-gold/30 shadow-[0_0_60px_rgba(255,215,0,0.1)]">
+                                <div className="bg-gold text-black font-black text-center py-2 uppercase tracking-widest text-xs shadow-lg">
                                     Limited Time Offer
                                 </div>
 
-                                <div className="p-10 md:p-14">
-                                    <div className="space-y-4 mb-8">
-                                        {product.details.slice(0, 2).map((detail, idx) => (
-                                            <div key={idx} className="flex justify-between items-center text-gray-300 text-lg border-b border-white/10 pb-4">
-                                                <div className="flex items-center gap-3">
-                                                    <Check size={20} className="text-gold" />
-                                                    <span>{detail.title}</span>
-                                                </div>
-                                                <span className="line-through text-gray-600">{detail.originalPrice}</span>
+                                <div className="p-6 md:p-10">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+                                        {/* Left Col: Breakdown */}
+                                        <div className="space-y-6">
+                                            <div className="space-y-4">
+                                                {product.details.slice(0, 2).map((detail, idx) => (
+                                                    <div key={idx} className="flex justify-between items-center text-gray-300 text-base md:text-lg border-b border-white/10 pb-3">
+                                                        <div className="flex flex-col">
+                                                            <div className="flex items-center gap-2">
+                                                                <Check size={18} className="text-gold" />
+                                                                <span className="font-bold">{detail.title}</span>
+                                                            </div>
+                                                            {detail.gst && <span className="text-[10px] text-gold ml-7">{detail.gst}</span>}
+                                                        </div>
+                                                        <div className="flex flex-col items-end">
+                                                            <span className="line-through text-gray-600 text-sm">{detail.originalPrice}</span>
+                                                            <span className="text-white font-medium">{detail.price}</span>
+                                                        </div>
+                                                    </div>
+                                                ))}
                                             </div>
-                                        ))}
-                                    </div>
 
-                                    <div className="text-center mb-10">
-                                        <p className="text-gray-500 uppercase tracking-widest text-sm mb-2">Total Value</p>
-                                        <p className="text-3xl font-bold text-gray-500 line-through decoration-red-500/50">
-                                            {product.landingPage.comparison.originalTotal}
-                                        </p>
-                                    </div>
+                                            <div className="flex justify-between items-center pt-2">
+                                                <p className="text-gray-500 uppercase tracking-widest text-xs">Total Value</p>
+                                                <p className="text-2xl font-bold text-gray-500 line-through decoration-red-500/50">
+                                                    {product.landingPage.comparison.originalTotal}
+                                                </p>
+                                            </div>
+                                        </div>
 
-                                    <div className="text-center text-gold mb-10">
-                                        <ArrowRight size={32} className="rotate-90 mx-auto animate-bounce" />
-                                    </div>
+                                        {/* Right Col: Price & Action */}
+                                        <div className="flex flex-col items-center md:items-start text-center md:text-left relative">
+                                            {/* Divider on Desktop */}
+                                            <div className="hidden md:block absolute -left-6 top-0 bottom-0 w-px bg-white/10"></div>
 
-                                    <div className="text-center mb-12">
-                                        <p className="text-white uppercase tracking-widest font-bold mb-4 text-sm">Your Deal Price</p>
-                                        <p className="text-6xl md:text-8xl font-heading font-black text-gold drop-shadow-[0_0_30px_rgba(255,215,0,0.4)] leading-none">
-                                            {product.landingPage.comparison.bundlePrice}
-                                        </p>
-                                    </div>
+                                            <p className="text-white uppercase tracking-widest font-bold mb-2 text-xs">Your Deal Price</p>
 
-                                    <div className="text-center mb-12">
-                                        <span className="inline-block bg-red-500/10 border border-red-500/50 text-red-400 px-8 py-3 rounded-full font-bold text-xl">
-                                            YOU SAVE {product.landingPage.comparison.saveAmount} 🔥
-                                        </span>
-                                    </div>
+                                            <div className="mb-4">
+                                                <p className="text-5xl md:text-7xl font-heading font-black text-gold drop-shadow-[0_0_30px_rgba(255,215,0,0.4)] leading-none">
+                                                    {product.landingPage.comparison.bundlePrice}
+                                                </p>
+                                                <p className="text-gray-400 text-[10px] uppercase tracking-widest mt-2">(inclusive of all taxes)</p>
+                                            </div>
 
-                                    <button
-                                        onClick={() => handleInterestClick(false)}
-                                        className="w-full py-5 bg-gold text-black font-black text-xl md:text-2xl rounded-full hover:bg-yellow-400 hover:shadow-[0_0_40px_rgba(255,215,0,0.4)] transition-all"
-                                    >
-                                        {product.landingPage.hero.cta}
-                                    </button>
-                                    <p className="text-center text-gray-500 mt-6 text-sm">{product.renewal}</p>
+                                            <div className="mb-8">
+                                                <span className="inline-block bg-red-500/10 border border-red-500/50 text-red-400 px-6 py-2 rounded-full font-bold text-sm md:text-base">
+                                                    YOU SAVE {product.landingPage.comparison.saveAmount} 🔥
+                                                </span>
+                                            </div>
+
+                                            <button
+                                                onClick={() => handleInterestClick(false)}
+                                                className="w-full py-4 bg-gold text-black font-black text-lg md:text-xl rounded-full hover:bg-yellow-400 hover:shadow-[0_0_40px_rgba(255,215,0,0.4)] transition-all"
+                                            >
+                                                {product.landingPage.hero.cta}
+                                            </button>
+                                            <p className="text-gray-500 mt-4 text-[10px] md:text-xs">{product.renewal}</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

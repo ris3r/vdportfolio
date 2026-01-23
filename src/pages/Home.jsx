@@ -262,6 +262,10 @@ const Home = () => {
                             {
                                 name: "Karthik Swami",
                                 quote: "Vinith D'costa & Associates Trading Academy has helped me become a Professional Trader. I am trading on daily basis with VD Strategies and I am making consistent profits... Your new designed golden SMC software also is amazing with great Positional results 👌. Highly Recommend them to everyone 😊. The Best!"
+                            },
+                            {
+                                name: "Sharel U",
+                                quote: "One of the best trading services I’ve experienced. Genuine calls and consistent accuracy. Highly recommend VD associates ! Perfect for both beginners and experienced traders."
                             }
                         ].map((t, i) => (
                             <div key={i} className="glass-panel p-8 relative bg-gray-light/30 flex flex-col h-full">

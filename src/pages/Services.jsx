@@ -34,50 +34,73 @@ const Services = () => {
 
     const services = [
         {
+            id: 'premium-mentorship',
+            title: "Premium Mentorship",
+            subtitle: "Real Time Market Analysis",
+            specialHighlight: "Best Entry Point",
+            price: (
+                <div className="flex flex-col gap-3 mt-1">
+                    <div className="flex justify-between items-center border border-green-500/30 bg-green-500/10 rounded-lg p-3 -mx-2 relative overflow-hidden group">
+                        <div className="absolute inset-0 bg-green-500/5 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                        <div className="flex flex-col">
+                            <span className="text-green-400 text-sm font-bold uppercase tracking-wider">Start Here</span>
+                            <span className="text-gray-300 text-sm">Monthly Plan</span>
+                        </div>
+                        <div className="text-right">
+                            <span className="text-3xl font-heading font-bold text-white">₹6,000</span>
+                            <span className="text-xs text-gray-500 block">+ GST</span>
+                        </div>
+                    </div>
+                    <div className="flex justify-between items-baseline border-b border-white/5 pb-1 px-1 opacity-70 hover:opacity-100 transition-opacity">
+                        <span className="text-gray-300">Half-Yearly</span>
+                        <span><span className="text-xl font-heading font-bold text-gold">₹30,000</span> <span className="text-xs text-gray-500">+ GST</span></span>
+                    </div>
+                    <div className="flex justify-between items-baseline">
+                        <span className="text-gray-300">Yearly</span>
+                        <span><span className="text-2xl font-heading font-bold text-gold">₹50,000</span> <span className="text-xs text-gray-500">+ GST</span></span>
+                    </div>
+                </div>
+            ),
+            // priceSuffix: "(Yearly Plan inc GST)", // Removed as we show breakdown
+            features: [
+                "Daily Markets Insights (NIFTY, BANKNIFTY)",
+                "Real Time Market Analysis",
+                "Strong Equity Picks for Wealth Creation",
+                "Minimum Capital: ₹10,000 - ₹15,000",
+                "Monthly & Half-Yearly Plans Available"
+            ],
+            isPopular: false
+        },
+        {
             id: 'golden-mentorship',
             title: "The Golden Mentorship",
             subtitle: "Collaborative Bundle Offer",
             price: "₹1,53,000",
+            priceSuffix: "(Inclusive of all taxes)",
+            renewal: "Renewal: ₹15,000 + 18% GST / Year",
             features: [
-                "Vinith D'costa & Associates: Market Analysis, Software & Screener",
-                "VD Financepedia: Weekly Classes (Tuesdays)",
-                "Complete Training Recording of Screeners",
-                "Educational Views on Market Trends",
-                "Pre-market Discussion"
+                "Vinith D'costa & Associates: Market Analysis & Software",
+                "VD Financepedia: Daily Educational Views on Trading",
+                "Weekly Live Demo Trading Sessions",
+                "Astro Prediction Software & Stock Screeners",
+                "Educational Seminars, Classes & Coaching",
+                "Premium Discord Channel Access"
             ],
             isPopular: true
-        },
-        {
-            id: 'premium-mentorship',
-            title: "Premium Mentorship",
-            subtitle: "Real Time Market Analysis",
-            price: (
-                <div className="flex flex-col">
-                    <span className="text-xl">Monthly: ₹6,000 <span className="text-sm text-gold/70">+ 18% GST</span></span>
-                    <span className="text-lg text-gray-300 font-normal mt-1">Half Yearly: ₹30,000 <span className="text-xs text-gray-500">+ 18% GST</span></span>
-                    <span className="text-lg text-gray-300 font-normal">Yearly: ₹50,000 <span className="text-xs text-gray-500">+ 18% GST</span></span>
-                </div>
-            ),
-            features: [
-                "Daily Markets Insights (NIFTY, BANKNIFTY, SENSEX)",
-                "Real Time Market Analysis",
-                "Strong Equity Picks for Wealth Creation",
-                "Minimum Capital: ₹10,000 - ₹15,000",
-                "Half-Yearly & Yearly Plans Available"
-            ],
-            isPopular: false
         },
         {
             id: 'cfo-program',
             title: "CFO Program",
             subtitle: "Personal Finance & Portfolio Management",
             price: "₹1,29,499",
+            priceSuffix: "(Inclusive of all taxes)",
+            renewal: "Renewal: ₹12,000 + 18% GST / Year",
             features: [
                 "Stocks & Mutual Fund Picks",
                 "Custom Smallcases",
                 "Rebalancing Discipline (Quarterly/Half-yearly)",
                 "Actionable Calls (Buy/Sell signals)",
-                "Yearly Renewal: ₹12,000 + GST"
+                "Yearly Renewal Available"
             ],
             isPopular: false
         }
@@ -129,7 +152,7 @@ const Services = () => {
             {/* Services Grid */}
             <section className="py-20 bg-neutral-900/30">
                 <div className="container">
-                    <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-8">
                         {services.map((service, index) => (
                             <div key={index} className="service-card h-full">
                                 <ServiceCard {...service} />

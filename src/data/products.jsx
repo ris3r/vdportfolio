@@ -6,15 +6,19 @@ export const products = [
         id: 'golden-mentorship',
         title: "The Golden Mentorship",
         subtitle: "Collaborative Bundle Offer",
-        hook: "Knowledge. Tools. Growth. Market Guidance.",
+        hook: "Knowledge. Tools. Growth. Expert Guidance.",
         description: "A comprehensive bundle combining VD Financepedia's educational rigor with Vinith D'costa & Associates' market guidance. The ultimate path to financial mastery.",
         icon: <Award size={50} color="var(--color-gold)" />,
         price: "₹1,53,000",
-        originalPrice: "₹2,00,000",
+        originalPrice: "₹2,00,098",
         saveLabel: "25% OFF",
         features: [
-            "Vinith D'costa & Associates: Market Analysis, Software & Screener, Pre-market discussion",
-            "VD Financepedia: Weekly classes on Tuesdays, Complete training recording of screeners & software"
+            "Daily educational views on Trading",
+            "Weekly Live Demo Trading Sessions",
+            "Astro Prediction Software & Stock Screeners",
+            "Stock Views (Short/Long term, Penny stocks)",
+            "Options & Futures Trading",
+            "Premium Discord Channel Access"
         ],
         details: [
             {
@@ -22,9 +26,11 @@ export const products = [
                 originalPrice: "₹1,30,999",
                 price: "₹1,00,000",
                 items: [
-                    "Weekly once classes on Tuesdays",
-                    "Complete training recording of Screeners & Software",
-                    "Educational views on market trends"
+                    "Daily Educational Views on Trading",
+                    "Weekly Live Demo Trading Sessions for the students",
+                    "Astro Prediction Software & Stock Screeners (BTC, FOREX, Indian Market & Commodities)",
+                    "Master Prediction Mythology & Financial Astrology",
+                    "Educational Seminars, Classes & Coaching"
                 ]
             },
             {
@@ -33,9 +39,10 @@ export const products = [
                 price: "₹45,000",
                 gst: "+ 18% GST",
                 items: [
-                    "Market Analysis",
-                    "Software & Screener Access",
-                    "Pre-market discussion"
+                    "Stock Views (Short/Long term ideas)",
+                    "Quality & Penny stocks (Global/Indian)",
+                    "Options & Futures Trading",
+                    "Premium Discord Channel Access"
                 ]
             }
         ],
@@ -44,8 +51,7 @@ export const products = [
             hero: {
                 headline: "Unlock the Golden Edge: 25% OFF Market Mastery",
                 subheadline: "Stop Guessing. Start Dominating. The Collaborative Bundle for Serious Traders.",
-                cta: "Register Interest",
-                urgency: "Offer Ends in 7 Days – 35/50 Spots Left!"
+                cta: "Register Interest"
             },
             painPoints: [
                 { title: "Choppy Signals?", desc: "Stop bleeding capital on lagging indicators." },
@@ -54,14 +60,17 @@ export const products = [
             ],
             valueVault: {
                 vdTools: [
-                    "Weekly Classes (Tuesdays)",
-                    "Training Recordings (Screeners & Software)",
-                    "Educational Rigor"
+                    "Daily Educational Views on Trading",
+                    "Weekly Live Demo Trading Sessions",
+                    "Astro Prediction Software & Stock Screeners",
+                    "Master Prediction Mythology & Astrology",
+                    "Educational Seminars, Classes & Coaching"
                 ],
                 vinithExpertise: [
-                    "Market Analysis",
-                    "Software & Screeners",
-                    "Pre-market Discussion"
+                    "Stock Views (Short/Long Term)",
+                    "Options & Futures Trading",
+                    "Quality & Penny Stocks",
+                    "Premium Discord Channel Access"
                 ]
             },
             testimonials: [
@@ -70,9 +79,9 @@ export const products = [
                 { name: "Amit, Dubai", quote: "Finally, a mentorship that pays for itself in the first month." }
             ],
             comparison: {
-                originalTotal: "₹2,00,998",
+                originalTotal: "₹2,00,098",
                 bundlePrice: "₹1,53,000",
-                saveAmount: "₹47,998"
+                saveAmount: "₹47,098"
             }
         }
     },
@@ -169,6 +178,7 @@ export const products = [
             "Stocks & Mutual Fund Picks",
             "Custom Smallcases & Rebalancing Discipline"
         ],
+        renewal: "Renewal: ₹12,000 + 18% GST / Year",
         details: [
             {
                 title: "VD Financepedia",
@@ -229,7 +239,7 @@ export const products = [
                 bundlePrice: "₹1,29,499",
                 saveAmount: "₹47,599"
             },
-            renewal: "yearly renewal of 12K + 18% GST",
+
             ctaSection: {
                 headline: "Ready to ",
                 highlight: "Command",
