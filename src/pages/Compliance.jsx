@@ -81,15 +81,7 @@ const Compliance = () => {
                                 <a
                                     href={doc.url}
                                     download={doc.filename || doc.title}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
                                     className="relative z-10 mt-auto flex items-center gap-2 text-gold font-semibold py-2 px-6 rounded-full border border-gold/30 hover:bg-gold hover:text-black transition-all duration-300"
-                                    onClick={(e) => {
-                                        if (doc.isBase64) {
-                                            // Ensure Base64 links trigger download immediately
-                                            // The 'download' attribute handles it, but explicit checks help debugging
-                                        }
-                                    }}
                                 >
                                     <Download size={18} />
                                     Download

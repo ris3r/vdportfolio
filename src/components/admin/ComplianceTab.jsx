@@ -232,6 +232,32 @@ const ComplianceTab = ({ renderEmptyState }) => {
         }
     };
 
+    const handleViewFile = (item) => {
+        if (item.isBase64 && item.url.startsWith('data:')) {
+            // Check if it is a PDF
+            const isPdf = item.url.includes('application/pdf');
+
+            if (isPdf) {
+                // Try to render PDF in new tab
+                const win = window.open();
+                win.document.write(
+                    '<iframe src="' + item.url + '" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen></iframe>'
+                );
+            } else {
+                // For others (DOCX, etc), force download with correct name because browsers can't displaying them
+                const link = document.createElement('a');
+                link.href = item.url;
+                link.download = item.filename || 'document'; // FORCE CORRECT FILENAME
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        } else {
+            // Standard URL
+            window.open(item.url, '_blank');
+        }
+    };
+
     if (loading) return <div className="text-gold p-4">Loading Documents...</div>;
 
     return (
@@ -322,9 +348,12 @@ const ComplianceTab = ({ renderEmptyState }) => {
                                 </div>
                                 <div className="min-w-0">
                                     <h4 className="text-white font-medium truncate">{item.title}</h4>
-                                    <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-400 hover:underline truncate block">
+                                    <button
+                                        onClick={() => handleViewFile(item)}
+                                        className="text-xs text-blue-400 hover:underline truncate block text-left"
+                                    >
                                         View File
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
                             <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">

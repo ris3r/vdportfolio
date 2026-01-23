@@ -1,0 +1,51 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to check if user is admin or superadmin
+    function isAdmin() {
+      let role = get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+      return request.auth != null && (role == 'admin' || role == 'superadmin');
+    }
+
+    // Helper function to check if user is authenticated
+    function isAuth() {
+      return request.auth != null;
+    }
+
+    // USERS Collection
+    match /users/{userId} {
+      // Users can read/write their own profile
+      // Admins can read all profiles (for dashboard)
+      // Admins can write (to block/update users)
+      allow read: if (request.auth != null && request.auth.uid == userId) || isAdmin();
+      allow write: if (request.auth != null && request.auth.uid == userId) || isAdmin();
+    }
+
+    // MESSAGES Collection (Contact Form)
+    match /messages/{messageId} {
+      // Anyone can create a message (Public Contact Form)
+      // Only Admins can read messages
+      allow create: if true; 
+      allow read, update, delete: if isAdmin();
+    }
+
+    // INTERESTS Collection (Product Applications)
+    match /interests/{interestId} {
+      // Users can create interest
+      // Users can read their own interests
+      // Admins can read/write all
+      allow create: if isAuth();
+      allow read: if isAuth() && (resource.data.user.uid == request.auth.uid || isAdmin());
+      allow update, delete: if isAdmin();
+    }
+
+    // COMPLIANCE DOCS Collection
+    match /compliance_docs/{docId} {
+      // Authenticated users can read docs
+      // Only Admins can write (upload/delete)
+      allow read: if isAuth();
+      allow write: if isAdmin();
+    }
+  }
+}

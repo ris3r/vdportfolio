@@ -55,8 +55,11 @@ const AdminDashboard = () => {
     const fetchData = async () => {
         setLoading(true);
         try {
-            // Fetch Users
-            const usersSnapshot = await getDocs(collection(db, 'users'));
+            // Fetch Users with Limit for Safety (Pagination start)
+            const { query, limit } = await import('firebase/firestore');
+            const usersQuery = query(collection(db, 'users'), limit(50));
+
+            const usersSnapshot = await getDocs(usersQuery);
             let fetchedUsers = usersSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 
             // HIERARCHY LOGIC:
@@ -70,41 +73,27 @@ const AdminDashboard = () => {
                 // Normal Admin -> Sees only 'user' role (Hides other admins)
                 fetchedUsers = fetchedUsers.filter(u => u.role !== 'admin' && u.role !== 'superadmin');
             }
-            // Assuming 'vdassociates029@gmail.com' is the ONLY Super Admin for now as per request.
-            // Or we can check if currentUser.role === 'superadmin'.
-            // User requested: "vd associate is a super user... normal admin cannot see other normal admins"
-
-            // We need the CURRENT USER'S ROLE. 
-            // Since 'user' from context might be stale or not passed to this generic fetch function easily without props or context,
-            // we will rely on the Context 'user' object if available, OR fetch it.
-            // However, 'auth.currentUser' doesn't have the role.
-            // We should use the 'user' from useAuth() hook which we will add to the component.
-
-            // For now, let's implement the filtering in the RENDER or here if we have the context user.
-            // I will initialize 'currentUserProfile' from useAuth() in the component body and use it here.
-            // But since fetchData is inside useEffect, we need to ensure we have the profile.
-
-            // *Correction*: I will use the 'user' from `useAuth` which is already available in the component scope?
-            // No, the component currently does NOT use `useAuth`. I need to add it.
 
             setUsers(fetchedUsers);
 
-            // Fetch Messages
-            const messagesSnapshot = await getDocs(collection(db, 'messages'));
+            // Fetch Messages (Limit 50 latest)
+            const messagesQuery = query(collection(db, 'messages'), limit(50));
+            const messagesSnapshot = await getDocs(messagesQuery);
             const fetchedMessages = messagesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
             // Sort by date desc
             fetchedMessages.sort((a, b) => new Date(b.date) - new Date(a.date));
             setMessages(fetchedMessages);
 
-            // Fetch Interests
-            const interestsSnapshot = await getDocs(collection(db, 'interests'));
+            // Fetch Interests (Limit 50 latest)
+            const interestsQuery = query(collection(db, 'interests'), limit(50));
+            const interestsSnapshot = await getDocs(interestsQuery);
             const fetchedInterests = interestsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
             fetchedInterests.sort((a, b) => new Date(b.date) - new Date(a.date));
             setInterests(fetchedInterests);
 
-            // Calculate Stats
+            // Calculate Stats (Note: Total counts might be inaccurate with limits, requiring a separate count aggregation query for huge datasets, but this prevents crashes)
             setStats({
-                totalUsers: fetchedUsers.length,
+                totalUsers: fetchedUsers.length + (usersSnapshot.size === 50 ? "+" : ""),
                 totalInterests: fetchedInterests.length,
                 totalMessages: fetchedMessages.length
             });
