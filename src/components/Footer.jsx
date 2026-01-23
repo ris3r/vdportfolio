@@ -13,7 +13,7 @@ const Footer = () => {
                         <div style={{ marginBottom: '5px' }}>
                             <img src="/brand_logo.png" alt="VD Logo" style={{ height: '120px', width: 'auto' }} />
                         </div>
-                        <h3 style={{ color: 'var(--color-gold)', fontSize: '1.5rem', marginBottom: '5px' }}>VINITH D'COSTA & ASSOCIATES</h3>
+                        <h3 style={{ color: 'var(--color-gold)', fontSize: '1.5rem', marginBottom: '5px' }}>VINITH DCOSTA & ASSOCIATES</h3>
                         <p style={{ color: 'var(--color-gold)', fontSize: '0.9rem', fontStyle: 'italic', marginBottom: '20px' }}>Your Key To Success</p>
                         <p style={{ color: '#aaa', marginBottom: '20px', lineHeight: '1.8' }}>
                             SEBI-registered Stock Market Research & Analysis firm delivering transparent, data-driven market intelligence.
@@ -68,7 +68,7 @@ const Footer = () => {
                 </div>
 
                 <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '20px', textAlign: 'center', color: '#666', fontSize: '0.9rem' }}>
-                    <p>&copy; {new Date().getFullYear()} Vinith D'costa & Associates. All rights reserved.</p>
+                    <p>&copy; {new Date().getFullYear()} Vinith Dcosta & Associates. All rights reserved.</p>
                 </div>
             </div>
         </footer>

@@ -65,7 +65,7 @@ const HeroSection = ({
                     marginBottom: '20px',
                     fontWeight: '600'
                 }}>
-                    Vinith D'costa & Associates
+                    Vinith Dcosta & Associates
                 </h2>
 
                 <h1 className="animate-fade-in hero-glow-text" style={{

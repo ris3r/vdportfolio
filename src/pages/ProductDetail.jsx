@@ -299,7 +299,7 @@ const ProductDetail = () => {
                                         <div className="bg-gold p-3 rounded-full">
                                             <TrendingUp size={32} className="text-black" />
                                         </div>
-                                        <h3 className="text-3xl font-heading font-bold text-white">Vinith D'costa Tools</h3>
+                                        <h3 className="text-3xl font-heading font-bold text-white">Vinith Dcosta Tools</h3>
                                     </div>
                                     <ul className="space-y-6">
                                         {product.landingPage.valueVault.vdTools.map((item, i) => (

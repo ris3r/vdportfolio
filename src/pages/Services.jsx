@@ -79,7 +79,7 @@ const Services = () => {
             priceSuffix: "(Inclusive of all taxes)",
             renewal: "Renewal: ₹15,000 + 18% GST / Year",
             features: [
-                "Vinith D'costa & Associates: Market Analysis & Software",
+                "Vinith Dcosta & Associates: Market Analysis & Software",
                 "VD Financepedia: Daily Educational Views on Trading",
                 "Weekly Live Demo Trading Sessions",
                 "Astro Prediction Software & Stock Screeners",

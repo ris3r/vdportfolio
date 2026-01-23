@@ -64,7 +64,7 @@ const DiscordPromoModal = () => {
                     </h2>
 
                     <p className="text-gray-400 mb-8 leading-relaxed text-sm">
-                        Join our elite community on Discord. Get real-time <span className="text-gold font-medium">trade insights</span>, market data, and expert analysis completely free.
+                        Join Vinith Dcosta and Associates Trading Elite Community (SEBI Licensed). Get real-time <span className="text-gold font-medium">trade insights</span>, Options, Futures, Equity, International Markets, Market Data and expert analysis completely free.
                     </p>
 
                     <div className="grid gap-3 mb-8 text-left">

@@ -111,7 +111,7 @@ const Home = () => {
                 <div className="container">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                         <div className="order-2 lg:order-1">
-                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white text-center lg:text-left">About <span className="text-gold">Dr. Vinith D’costa</span></h2>
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white text-center lg:text-left">About <span className="text-gold">Dr. Vinith Dcosta</span></h2>
                             <p className="text-gray-muted mb-6 text-lg leading-relaxed">
                                 Dr. Vinith is a SEBI-Registered Research Analyst with a Doctorate in Financial Management, a PGPM in Finance, and NISM certification.
                             </p>
@@ -149,7 +149,7 @@ const Home = () => {
 
                                 <img
                                     src="/founder_portrait.jpg"
-                                    alt="Dr. Vinith D'costa"
+                                    alt="Dr. Vinith Dcosta"
                                     className="w-full h-auto rounded-xl shadow-2xl filter contrast-110 brightness-110"
                                 />
                             </div>
@@ -248,7 +248,7 @@ const Home = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {[
                             {
-                                name: "Abdul Shafwan",
+                                name: "Abdul Safwan",
                                 quote: "The expertise, dedication, and personalized guidance have been nothing short of phenomenal. From the start, they went above and beyond to ensure our success, offering invaluable insights and prompt assistance. This organisation truly sets the standard for excellence in support. Highly recommend to anyone looking for top-tier expertise and service!"
                             },
                             {
@@ -261,7 +261,7 @@ const Home = () => {
                             },
                             {
                                 name: "Karthik Swami",
-                                quote: "Vinith D'costa & Associates Trading Academy has helped me become a Professional Trader. I am trading on daily basis with VD Strategies and I am making consistent profits... Your new designed golden SMC software also is amazing with great Positional results 👌. Highly Recommend them to everyone 😊. The Best!"
+                                quote: "Vinith Dcosta & Associates Trading Academy has helped me become a Professional Trader. I am trading on daily basis with VD Strategies and I am making consistent profits... Your new designed golden SMC software also is amazing with great Positional results 👌. Highly Recommend them to everyone 😊. The Best!"
                             },
                             {
                                 name: "Sharel U",

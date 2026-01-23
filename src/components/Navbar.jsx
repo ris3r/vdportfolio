@@ -81,7 +81,7 @@ const Navbar = () => {
           <Link to="/" className="flex items-center gap-3 group">
             <img src="/brand_logo.png" alt="VD Logo" className="h-10 w-auto md:h-12 transition-transform duration-300 group-hover:scale-105" />
             <div className="flex flex-col">
-              <span className="text-lg md:text-xl font-bold text-gold tracking-tight leading-none">VINITH D'COSTA</span>
+              <span className="text-lg md:text-xl font-bold text-gold tracking-tight leading-none">VINITH DCOSTA</span>
               <span className="text-[0.65rem] md:text-xs text-white tracking-[0.2em] font-medium leading-none">& ASSOCIATES</span>
             </div>
           </Link>

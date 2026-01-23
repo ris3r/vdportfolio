@@ -34,7 +34,7 @@ const YouTubeSection = () => {
                                 </div>
                                 <div>
                                     <h2 className="text-2xl md:text-3xl font-heading text-white mb-2 leading-tight">
-                                        The Wealth Code <span className="text-lg md:text-xl text-gray-400 font-normal">by</span> <span className="text-gold">Dr. Vinith D'Costa</span>
+                                        The Wealth Code <span className="text-lg md:text-xl text-gray-400 font-normal">by</span> <span className="text-gold">Dr. Vinith Dcosta</span>
                                     </h2>
                                     <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-gray-400 justify-center md:justify-start items-center mt-2">
                                         <a href="https://youtube.com/@VinithDcosta" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold transition-colors bg-white/5 px-3 py-1 rounded-full md:bg-transparent md:p-0 md:rounded-none">
@@ -55,7 +55,7 @@ const YouTubeSection = () => {
                                 Elite Strategies for <span className="text-gold">Financial Freedom</span>
                             </h3>
                             <p style={{ color: '#ccc', marginBottom: '20px', lineHeight: '1.7' }}>
-                                Hosted by Dr. Vinith Oscar D’Costa, this podcast channel goes beyond just trading. We invite experts from various sectors to share insights not only on finance but on life, values, and beliefs.
+                                Hosted by Dr. Vinith Oscar Dcosta, this podcast channel goes beyond just trading. We invite experts from various sectors to share insights not only on finance but on life, values, and beliefs.
                             </p>
                             <p style={{ color: '#aaa', marginBottom: '30px', lineHeight: '1.7' }}>
                                 Join us as we explore the deeper aspects of wealth, success, and personal growth, blending market expertise with real-world wisdom.

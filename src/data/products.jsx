@@ -7,7 +7,7 @@ export const products = [
         title: "The Golden Mentorship",
         subtitle: "Collaborative Bundle Offer",
         hook: "Knowledge. Tools. Growth. Expert Guidance.",
-        description: "A comprehensive bundle combining VD Financepedia's educational rigor with Vinith D'costa & Associates' market guidance. The ultimate path to financial mastery.",
+        description: "A comprehensive bundle combining VD Financepedia's educational rigor with Vinith Dcosta & Associates' market guidance. The ultimate path to financial mastery.",
         icon: <Award size={50} color="var(--color-gold)" />,
         price: "₹1,53,000",
         originalPrice: "₹2,00,098",
@@ -34,7 +34,7 @@ export const products = [
                 ]
             },
             {
-                title: "Vinith D'costa & Associates",
+                title: "Vinith Dcosta & Associates",
                 originalPrice: "₹57,999",
                 price: "₹45,000",
                 gst: "+ 18% GST",
@@ -192,7 +192,7 @@ export const products = [
                 ]
             },
             {
-                title: "Vinith D'costa & Associates",
+                title: "Vinith Dcosta & Associates",
                 originalPrice: "₹37,099",
                 items: [
                     "Stocks & Mutual Fund Picks - Strong equities + curated MF portfolios.",

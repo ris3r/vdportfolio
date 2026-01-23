@@ -49,7 +49,7 @@ const About = () => {
 
                             <img
                                 src="/founder_portrait.jpg"
-                                alt="Dr. Vinith Oscar D’costa"
+                                alt="Dr. Vinith Oscar Dcosta"
                                 className="w-full h-auto rounded-xl shadow-2xl filter contrast-110 brightness-110"
                             />
                         </div>
@@ -59,12 +59,12 @@ const About = () => {
                     <div className="founder-content">
                         <h4 className="text-gold font-bold uppercase tracking-widest text-sm mb-4">The Founder</h4>
                         <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-8">
-                            Dr. Vinith Oscar D’costa
+                            Dr. Vinith Oscar Dcosta
                         </h1>
 
                         <div className="space-y-6 text-gray-400 text-lg leading-relaxed">
                             <p>
-                                Dr. Vinith Oscar D’costa is the Founder & Director of Vinith D'costa & Associates, a SEBI-Registered Research Analyst firm. Hailing from Karnataka, he is a distinguished stock market expert and mentor, blending deep financial knowledge with hands-on market experience to empower investors and traders with clarity, confidence, and actionable insights.
+                                Dr. Vinith Oscar Dcosta is the Founder & Director of Vinith Dcosta & Associates, a SEBI-Registered Research Analyst firm. Hailing from Karnataka, he is a distinguished stock market expert and mentor, blending deep financial knowledge with hands-on market experience to empower investors and traders with clarity, confidence, and actionable insights.
                             </p>
                             <p>
                                 Over his remarkable journey, Dr. Vinith has mentored and guided more than 1,500 students worldwide, championing the importance of financial literacy and stock market education as essential tools for wealth creation and financial independence.
