@@ -67,8 +67,11 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '20px', textAlign: 'center', color: '#666', fontSize: '0.9rem' }}>
+                <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '20px', textAlign: 'center', color: '#666', fontSize: '0.9rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5px' }}>
                     <p>&copy; {new Date().getFullYear()} Vinith Dcosta & Associates. All rights reserved.</p>
+                    <p style={{ fontSize: '0.8rem', opacity: 0.7 }}>
+                        Developed by <a href="https://dewebdev.netlify.app/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-gold)', textDecoration: 'none' }} className="hover:text-white transition-colors">dewebdev creations</a>
+                    </p>
                 </div>
             </div>
         </footer>
