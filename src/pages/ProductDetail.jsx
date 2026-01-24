@@ -86,6 +86,49 @@ const ProductDetail = () => {
         );
     };
 
+    // --- DUAL CONFIRMATION LOGIC ---
+    const [showConfirmModal, setShowConfirmModal] = useState(false);
+
+    const ConfirmModal = () => {
+        if (!showConfirmModal) return null;
+        return (
+            <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-fade-in">
+                <div className="bg-neutral-900 border border-gold/30 p-8 rounded-2xl max-w-sm w-full relative text-center">
+                    <div className="mb-6">
+                        <div className="w-16 h-16 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <Users size={32} className="text-gold" />
+                        </div>
+                        <h3 className="text-2xl font-bold text-white mb-2">Request Callback</h3>
+                        <p className="text-gray-400 text-sm">
+                            Logged in as <span className="text-gold font-bold">{user?.name || user?.email}</span>
+                        </p>
+                        <p className="text-xs text-gray-500 mt-2">
+                            No payment is taken now. Our team will contact you via email or call to discuss the next steps.
+                        </p>
+                    </div>
+
+                    <div className="space-y-3">
+                        <button
+                            onClick={() => {
+                                setShowConfirmModal(false);
+                                executeSubmission(); // Proceed to actual submit
+                            }}
+                            className="w-full bg-gold text-black font-bold py-3 rounded-xl hover:bg-yellow-400 transition-colors"
+                        >
+                            Confirm Request
+                        </button>
+                        <button
+                            onClick={() => setShowConfirmModal(false)}
+                            className="w-full bg-transparent border border-white/10 text-gray-400 font-medium py-3 rounded-xl hover:bg-white/5 transition-colors"
+                        >
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        );
+    };
+
     const handleInterestClick = async (isRetry = false) => {
         console.log("Interest Click Debug:", { isRetry, userPhone: user?.phone, user });
 
@@ -102,7 +145,20 @@ const ProductDetail = () => {
             return;
         }
 
-        // Auto-submit for logged-in users
+        // NEW: Show Confirmation Modal before auto-submitting
+        // Unless it's a retry (which implies they just filled the phone prompt, acting as confirmation)
+        if (!isRetry) {
+            setShowConfirmModal(true);
+            return;
+        }
+
+        // If it IS a retry (from phone prompt), verify immediate execution or prompt again?
+        // User asked for "Dual Confirmation". Phone prompt is alreayd a confirmation. 
+        // But for safety, let's just run executeSubmission directly if coming from Phone Prompt
+        executeSubmission();
+    };
+
+    const executeSubmission = async () => {
         try {
             // Check for duplicates
             const q = query(
@@ -204,6 +260,7 @@ const ProductDetail = () => {
                 isAutoSuccess={!!user && user.phone} // Only auto-success if phone exists
             />
             <PhonePromptModal />
+            <ConfirmModal />
 
             {/* --- LUXURY BUNDLE LAYOUT --- */}
             {isLuxuryBundle ? (
@@ -299,7 +356,7 @@ const ProductDetail = () => {
                                         <div className="bg-gold p-3 rounded-full">
                                             <TrendingUp size={32} className="text-black" />
                                         </div>
-                                        <h3 className="text-3xl font-heading font-bold text-white">Vinith Dcosta Tools</h3>
+                                        <h3 className="text-3xl font-heading font-bold text-white">VD Financepedia Tools</h3>
                                     </div>
                                     <ul className="space-y-6">
                                         {product.landingPage.valueVault.vdTools.map((item, i) => (
@@ -520,10 +577,10 @@ const ProductDetail = () => {
                                     {product.period && !product.pricingTiers && <p className="text-gray-500 mb-8">{product.period}</p>}
 
                                     <button
-                                        onClick={handleInterestClick}
+                                        onClick={() => handleInterestClick(false)}
                                         className="w-full py-4 bg-gold text-black font-bold rounded-xl hover:bg-yellow-400 transition-all"
                                     >
-                                        Register Interest
+                                        {product.landingPage?.hero.cta || "Request Callback"}
                                     </button>
                                 </div>
                             </div>

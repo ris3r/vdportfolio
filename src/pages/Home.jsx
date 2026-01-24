@@ -59,7 +59,7 @@ const Home = () => {
         {
             icon: <Users size={40} className="text-gold" />,
             title: "VD Financepedia",
-            description: "Specialized entity for training on market software and screeners."
+            description: "Specialized entity for training on high quality strategies, market software and stock screeners."
         }
     ];
 
@@ -71,10 +71,10 @@ const Home = () => {
             <div className="border-b border-white/10 bg-white/[0.02] py-8 w-full overflow-hidden">
                 <div className="container grid grid-cols-2 md:grid-cols-4 gap-8">
                     {[
-                        { number: "1,500+", label: "Students Mentored" },
+                        { number: "7 Years", label: "Professional Trading Experience" },
+                        { number: "3 Years", label: "Offline Dominance" },
                         { number: "SEBI", label: "Registered Analyst" },
-                        { number: "2019", label: "Established" },
-                        { number: "NISM", label: "Certified" }
+                        { number: "1,500+", label: "Students Mentored" }
                     ].map((stat, index) => (
                         <div key={index} className="text-center group cursor-default">
                             <div className="text-3xl md:text-4xl font-bold text-gold mb-2 transform transition-transform duration-300 group-hover:scale-110">{stat.number}</div>

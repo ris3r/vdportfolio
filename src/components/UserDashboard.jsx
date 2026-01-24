@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { PlayCircle, Lock, Shield, Key } from 'lucide-react';
+import { PlayCircle, Lock, Shield, Key, Trash2 } from 'lucide-react';
 import Button from './Button';
 import { useAuth } from '../context/AuthContext';
 import { db } from '../firebase';
-import { collection, query, where, onSnapshot } from 'firebase/firestore';
+import { collection, query, where, onSnapshot, deleteDoc, doc } from 'firebase/firestore';
 
 const UserDashboard = ({ user }) => {
     const [interests, setInterests] = useState([]);
@@ -101,9 +101,29 @@ const UserDashboard = ({ user }) => {
                     <div className="text-gray-400 col-span-full">Loading your applications...</div>
                 ) : interests.length > 0 ? (
                     interests.map(interest => (
-                        <div key={interest.id} className="glass-panel p-6 hover:-translate-y-1 transition-transform duration-300 border border-white/10 relative overflow-hidden">
+                        <div key={interest.id} className="glass-panel p-6 hover:-translate-y-1 transition-transform duration-300 border border-white/10 relative overflow-hidden group">
                             {/* Status Indicator Line */}
                             <div className={`absolute top-0 left-0 w-1 h-full ${interest.status === 'replied' ? 'bg-green-500' : 'bg-gold'}`}></div>
+
+                            {/* Delete Button (Only for user) */}
+                            <button
+                                onClick={async (e) => {
+                                    e.stopPropagation();
+                                    if (window.confirm("Are you sure you want to remove this application?")) {
+                                        try {
+                                            await deleteDoc(doc(db, 'interests', interest.id));
+                                            // UI update is automatic via snapshot listener
+                                        } catch (error) {
+                                            console.error("Error deleting interest:", error);
+                                            alert("Failed to delete. Please try again.");
+                                        }
+                                    }
+                                }}
+                                className="absolute top-4 right-4 p-2 bg-neutral-900/80 rounded-full text-gray-400 hover:text-red-500 hover:bg-red-500/10 transition-all opacity-0 group-hover:opacity-100 z-10"
+                                title="Withdraw Application"
+                            >
+                                <Trash2 size={16} />
+                            </button>
 
                             <div className="mb-4 pl-4">
                                 <h3 className="text-lg font-bold text-white mb-1">{interest.productTitle}</h3>
@@ -129,7 +149,7 @@ const UserDashboard = ({ user }) => {
                 ) : (
                     <div className="col-span-full bg-neutral-900/50 border border-white/5 rounded-xl p-8 text-center">
                         <p className="text-gray-400 mb-4">You haven't applied for any courses yet.</p>
-                        <Button variant="primary" onClick={() => window.location.href = '/#services'}>
+                        <Button variant="primary" onClick={() => window.location.href = '/services'}>
                             <PlayCircle size={18} className="mr-2" /> Explore Courses
                         </Button>
                     </div>

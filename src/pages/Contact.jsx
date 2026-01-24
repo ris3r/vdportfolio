@@ -11,22 +11,55 @@ const Contact = () => {
     const [status, setStatus] = useState(null);
     const [errors, setErrors] = useState({});
 
+    // Spam Protection: value tracked on mount to detect "super-human" speed (bots)
+    const [loadTime, setLoadTime] = useState(null);
+
+    React.useEffect(() => {
+        setLoadTime(Date.now());
+    }, []);
+
     const validateForm = (data) => {
         const newErrors = {};
 
         // Email Validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const blockedEmails = ['test', 'example', 'demo', 'sample'];
+        const disposableDomains = ['tempmail.com', 'throwawaymail.com', 'mailinator.com', '10minutemail.com'];
+
+        const emailDomain = data.email.split('@')[1];
+        const emailUser = data.email.split('@')[0];
+
         if (!emailRegex.test(data.email)) {
             newErrors.email = "Please enter a valid email address.";
+        } else if (blockedEmails.some(blocked => data.email.toLowerCase().includes(blocked))) {
+            newErrors.email = "Please use a valid business or personal email.";
+        } else if (disposableDomains.includes(emailDomain)) {
+            newErrors.email = "Disposable email addresses are not allowed.";
         }
 
-        // Phone Validation (10-15 digits, allowing +)
-        const phoneRegex = /^\+?[0-9]{10,15}$/;
-        if (!phoneRegex.test(data.phone.replace(/\s/g, ''))) {
-            newErrors.phone = "Please enter a valid phone number (10-15 digits).";
+        // Phone Validation (Strict 10 digits + Anti-Spam Profile)
+        const cleanPhone = data.phone.replace(/\D/g, '');
+        const phoneRegex = /^[0-9]{10}$/;
+
+        // Anti-Spam: Block sequences and repeats
+        const isSequence = '01234567890123456789'.includes(cleanPhone) || '98765432109876543210'.includes(cleanPhone);
+        const isRepeated = /^(\d)\1+$/.test(cleanPhone); // Checks if all digits are the same (e.g. 1111111111)
+
+        if (!phoneRegex.test(cleanPhone)) {
+            newErrors.phone = "Please enter a valid 10-digit phone number.";
+        } else if (isSequence || isRepeated) {
+            newErrors.phone = "Please enter a valid, active phone number.";
         }
 
-        if (!data.name.trim()) newErrors.name = "Name is required.";
+        // Name Validation: No numbers or special symbols allowed (basic protection)
+        const nameRegex = /^[a-zA-Z\s\.\-\']+$/;
+
+        if (!data.name.trim()) {
+            newErrors.name = "Name is required.";
+        } else if (!nameRegex.test(data.name)) {
+            newErrors.name = "Name should contain letters only.";
+        }
+
         if (!data.message.trim()) newErrors.message = "Message is required.";
 
         setErrors(newErrors);
@@ -35,6 +68,7 @@ const Contact = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setStatus(null); // RESET STATUS IMMEDIATELY
 
         const formData = new FormData(e.target);
         const data = {
@@ -42,9 +76,30 @@ const Contact = () => {
             email: formData.get('email'),
             phone: formData.get('phone'),
             message: formData.get('message'),
+            // Honeypot field
+            internal_check: formData.get('internal_check'),
             date: new Date().toISOString(),
             status: 'pending'
         };
+
+        // 1. Silent Spam Block: Honeypot Check
+        if (data.internal_check) {
+            console.log("Spam detected (Honeypot). Silently rejecting.");
+            e.target.reset();
+            setStatus('success');
+            return;
+        }
+
+        // 2. Silent Spam Block: Speed Trap
+        if (Date.now() - loadTime < 1000) {
+            console.log("Spam detected (Speed Limit). Silently rejecting.");
+            e.target.reset();
+            setStatus('success');
+            return;
+        }
+
+        // Remove honeypot field before validation/saving
+        delete data.internal_check;
 
         if (!validateForm(data)) {
             return;
@@ -68,8 +123,6 @@ const Contact = () => {
 
     return (
         <div ref={containerRef} className="pt-32 pb-20 bg-black min-h-screen">
-            {/* ... (Header and Contact Info sections remain unchanged) ... */}
-
             <div className="container px-4">
                 {/* ... header ... */}
 
@@ -146,6 +199,15 @@ const Contact = () => {
                     {/* Contact Form */}
                     <div className="contact-form glass-panel p-8 md:p-10 border-gold/10">
                         <form className="space-y-6" onSubmit={handleSubmit} noValidate>
+                            {/* Honeypot Field - Hidden from humans, visible to bots */}
+                            <input
+                                type="text"
+                                name="internal_check"
+                                className="opacity-0 absolute top-0 left-0 h-0 w-0 z-[-1]"
+                                tabIndex={-1}
+                                autoComplete="off"
+                            />
+
                             <div>
                                 <label className="block text-gray-400 mb-2 text-sm font-medium">Name</label>
                                 <input

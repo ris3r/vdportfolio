@@ -79,7 +79,9 @@ const HomeHero = () => {
 
                 {/* Subheadline */}
                 <p className="animate-fade-in text-gray-300 text-lg md:text-xl max-w-3xl mx-auto mb-12 leading-relaxed">
-                    <span className="block text-white font-bold mb-2 text-2xl">Welcome to your market advantage.</span>
+                    <span className="block text-white font-bold mb-4 text-xl md:text-2xl bg-gradient-to-r from-white via-gold to-white bg-clip-text text-transparent">
+                        Mangalore’s Most Prominent SEBI Licensed Trading Academy which Caters Globally
+                    </span>
                     We combine the precision of <span className="text-gold font-semibold">Data Science</span> with the foresight of <span className="text-gold font-semibold">Financial Astrology</span>.
                     The result? You navigate the market with confidence and clarity.
                 </p>

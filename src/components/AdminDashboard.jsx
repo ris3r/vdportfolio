@@ -100,6 +100,7 @@ const AdminDashboard = () => {
 
         } catch (error) {
             console.error("Error fetching admin data:", error);
+            showToast("Failed to load dashboard data: " + error.message, 'error');
         } finally {
             setLoading(false);
         }

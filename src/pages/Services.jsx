@@ -63,7 +63,7 @@ const Services = () => {
             ),
             // priceSuffix: "(Yearly Plan inc GST)", // Removed as we show breakdown
             features: [
-                "Daily Markets Insights (NIFTY, BANKNIFTY)",
+                "Options, Futures Recommendations (Intraday & Delivery)",
                 "Real Time Market Analysis",
                 "Strong Equity Picks for Wealth Creation",
                 "Minimum Capital: ₹10,000 - ₹15,000",
@@ -79,11 +79,11 @@ const Services = () => {
             priceSuffix: "(Inclusive of all taxes)",
             renewal: "Renewal: ₹15,000 + 18% GST / Year",
             features: [
-                "Vinith Dcosta & Associates: Market Analysis & Software",
-                "VD Financepedia: Daily Educational Views on Trading",
+                "VD Financepedia: Advanced Course Strategies & Software",
+                "Vinith Dcosta & Associates : Daily Recommendations on Trading & Investing",
                 "Weekly Live Demo Trading Sessions",
-                "Astro Prediction Software & Stock Screeners",
-                "Educational Seminars, Classes & Coaching",
+                "Financial astro Prediction Software & Stock Screeners",
+                "Educational Seminars, Classes & Coaching on Smart Money Concepts & Advanced Price Action",
                 "Premium Discord Channel Access"
             ],
             isPopular: true
@@ -92,6 +92,8 @@ const Services = () => {
             id: 'cfo-program',
             title: "CFO Program",
             subtitle: "Personal Finance & Portfolio Management",
+            specialHighlight: "WEALTH ARCHITECT",
+            highlightColor: "purple",
             price: "₹1,29,499",
             priceSuffix: "(Inclusive of all taxes)",
             renewal: "Renewal: ₹12,000 + 18% GST / Year",
@@ -101,6 +103,33 @@ const Services = () => {
                 "Rebalancing Discipline (Quarterly/Half-yearly)",
                 "Actionable Calls (Buy/Sell signals)",
                 "Yearly Renewal Available"
+            ],
+            isPopular: false
+        },
+        {
+            id: 'money-code-international',
+            title: "THE MONEY CODE (INTERNATIONAL)",
+            subtitle: "Decode. Invest. Dominate.",
+            specialHighlight: "FUTURE READY",
+            highlightColor: "cyan",
+            price: (
+                <div className="flex flex-col gap-3 mt-1">
+                    <div className="flex justify-between items-baseline border-b border-white/5 pb-1">
+                        <span className="text-gray-300">Yearly</span>
+                        <span><span className="text-2xl font-heading font-bold text-gold">₹60,000</span> <span className="text-xs text-gray-500">+ GST</span></span>
+                    </div>
+                    <div className="flex justify-between items-baseline">
+                        <span className="text-gray-300">Lifetime</span>
+                        <span><span className="text-2xl font-heading font-bold text-gold">₹1,20,000</span> <span className="text-xs text-gray-500">+ GST</span></span>
+                    </div>
+                </div>
+            ),
+            priceSuffix: null,
+            features: [
+                "Funded Account Training on International Markets",
+                "Future of Digital Wealth",
+                "Logic, Discipline, and Mastery",
+                "Lifetime Access Option Available"
             ],
             isPopular: false
         }

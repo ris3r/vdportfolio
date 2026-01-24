@@ -1,5 +1,5 @@
 import React from 'react';
-import { TrendingUp, Shield, Users, Award, Bitcoin, DollarSign, BarChart2, PieChart } from 'lucide-react';
+import { TrendingUp, Shield, Users, Award, Globe, DollarSign, BarChart2, PieChart } from 'lucide-react';
 
 export const products = [
     {
@@ -13,9 +13,9 @@ export const products = [
         originalPrice: "₹2,00,098",
         saveLabel: "25% OFF",
         features: [
-            "Daily educational views on Trading",
-            "Weekly Live Demo Trading Sessions",
-            "Astro Prediction Software & Stock Screeners",
+            "VD Financepedia: Advanced Course Strategies & Software",
+            "Vinith Dcosta & Associates : Daily Recommendations on Trading & Investing",
+            "Financial astro Prediction Software & Stock Screeners",
             "Stock Views (Short/Long term, Penny stocks)",
             "Options & Futures Trading",
             "Premium Discord Channel Access"
@@ -28,9 +28,9 @@ export const products = [
                 items: [
                     "Daily Educational Views on Trading",
                     "Weekly Live Demo Trading Sessions for the students",
-                    "Astro Prediction Software & Stock Screeners (BTC, FOREX, Indian Market & Commodities)",
-                    "Master Prediction Mythology & Financial Astrology",
-                    "Educational Seminars, Classes & Coaching"
+                    "Financial astro Prediction Software & Stock Screeners (International Markets & Commodities)",
+                    "Master Stock Prediction Mythology & Financial Astrology",
+                    "Educational Seminars, Classes & Coaching on Smart Money Concepts & Advanced Price Action"
                 ]
             },
             {
@@ -51,7 +51,7 @@ export const products = [
             hero: {
                 headline: "Unlock the Golden Edge: 25% OFF Market Mastery",
                 subheadline: "Stop Guessing. Start Dominating. The Collaborative Bundle for Serious Traders.",
-                cta: "Register Interest"
+                cta: "Request Callback"
             },
             painPoints: [
                 { title: "Choppy Signals?", desc: "Stop bleeding capital on lagging indicators." },
@@ -62,9 +62,9 @@ export const products = [
                 vdTools: [
                     "Daily Educational Views on Trading",
                     "Weekly Live Demo Trading Sessions",
-                    "Astro Prediction Software & Stock Screeners",
-                    "Master Prediction Mythology & Astrology",
-                    "Educational Seminars, Classes & Coaching"
+                    "Financial astro Prediction Software & Stock Screeners",
+                    "Master Stock Prediction Mythology & Astrology",
+                    "Educational Seminars, Classes & Coaching on Smart Money Concepts & Advanced Price Action"
                 ],
                 vinithExpertise: [
                     "Stock Views (Short/Long Term)",
@@ -95,7 +95,7 @@ export const products = [
         price: "₹59,000 (Inc. GST)",
         period: "/ Yearly",
         features: [
-            "Daily Market Insights (NIFTY, BANKNIFTY, SENSEX & STOCK OPTIONS)",
+            "Options, Futures Recommendations (Intraday & Delivery)",
             "Strong Equity Picks for Wealth Creation",
             "Real Time Market Analysis",
             "Minimum Capital Required: ₹10,000 - ₹15,000"
@@ -109,7 +109,7 @@ export const products = [
             {
                 title: "What You'll Experience",
                 items: [
-                    "Daily Markets Insights: Exclusive views on NIFTY, BANKNIFTY, SENSEX & STOCK OPTIONS.",
+                    "Daily Market Recommendations: Exclusive views on Nifty, Banknifty & Stock Options.",
                     "Real Time Market Analysis.",
                     "Strong Equity Picks: Build long-term wealth with powerful equity opportunities."
                 ]
@@ -119,7 +119,7 @@ export const products = [
             hero: {
                 headline: "PREMIUM MENTORSHIP: Real Time Market Analysis",
                 subheadline: "Daily Insights. Wealth Creation.",
-                cta: "Register Interest",
+                cta: "Request Callback",
                 urgency: "Limited Spots Available"
             },
             painPoints: [
@@ -129,7 +129,7 @@ export const products = [
             ],
             valueVault: {
                 vdTools: [
-                    "Daily Market Insights (Index & Stock Options)",
+                    "Daily Market Recommendations (Index & Stock Options)",
                     "Real Time Analysis",
                     "Strong Equity Picks (Wealth Creation)"
                 ],
@@ -168,7 +168,7 @@ export const products = [
         description: "A bundle offer combining Fundamental & Tool Training with expert Stock & Mutual Fund picks. Manage your wealth like a CFO.",
         icon: <PieChart size={50} color="var(--color-gold)" />,
         price: "₹1,29,499",
-        originalPrice: "₹1,77,000",
+        originalPrice: "₹1,77,098",
         saveLabel: "BUNDLE OFFER",
         features: [
             "Fundamental & Tool Training",
@@ -183,6 +183,7 @@ export const products = [
             {
                 title: "VD Financepedia",
                 originalPrice: "₹1,30,999",
+                price: "₹1,00,000",
                 items: [
                     "Fundamental & Tool Training - Spot strong companies, use screeners.",
                     "Market Insights - Weekly updates on macro, micro, & global trends.",
@@ -194,11 +195,15 @@ export const products = [
             {
                 title: "Vinith Dcosta & Associates",
                 originalPrice: "₹37,099",
+                price: "₹25,000",
+                gst: "+ 18% GST",
                 items: [
-                    "Stocks & Mutual Fund Picks - Strong equities + curated MF portfolios.",
-                    "Custom Smallcases - portfolios tailored to your risk & goals.",
-                    "Rebalancing Discipline - Quarterly/half-yearly reviews.",
-                    "Actionable Calls - Clear buy/sell signals with timeframes."
+                    "Strong Equities & Curated Mutual Fund Portfolio",
+                    "Grey Market & IPO Recommendations",
+                    "Custom Smallcases - Portfolios tailored to your risk & goals.",
+                    "Rebalancing Discipline - Quarterly/half-yearly reviews: let winners run, cut losers.",
+                    "Actionable Calls - Clear buy/sell signals with timeframes.",
+                    "Stellar Future Trading Ideas"
                 ]
             }
         ],
@@ -206,7 +211,7 @@ export const products = [
             hero: {
                 headline: "PERSONAL FINANCE CFO PROGRAM: Your Roadmap to Financial Freedom",
                 subheadline: "Construct and Manage Wealth-Focused Portfolios like a Pro.",
-                cta: "Register Interest",
+                cta: "Request Callback",
                 urgency: "25% OFF Bundle Offer"
             },
             painPoints: [
@@ -223,10 +228,12 @@ export const products = [
                     "Psychology & Discipline"
                 ],
                 vinithExpertise: [
-                    "Stock & Mutual Fund Picks",
+                    "Strong Equities & Curated Mutual Fund Portfolio",
+                    "Grey Market & IPO Recommendations",
                     "Custom Smallcases (Tailored Portfolios)",
-                    "Rebalancing Discipline (Quarterly/Half-yearly)",
-                    "Actionable Buy/Sell Calls"
+                    "Rebalancing Discipline (Quarterly/Half-yearly: let winners run, cut losers)",
+                    "Actionable Buy/Sell Calls",
+                    "Stellar Future Trading Ideas"
                 ]
             },
             testimonials: [
@@ -246,6 +253,60 @@ export const products = [
                 headlineSuffix: " Your Wealth?",
                 buttonText: "GET INSTANT ACCESS",
                 subtext: "Financial freedom is a choice. Make yours today."
+            }
+        }
+    },
+    {
+        id: 'money-code-international',
+        title: "THE MONEY CODE (INTERNATIONAL)",
+        subtitle: "Decode. Invest. Dominate.",
+        hook: "Master the Future of Digital Wealth.",
+        description: "A revolutionary mentorship built for those who want to master the future of Digital Wealth and International Markets.",
+        icon: <Globe size={50} color="var(--color-gold)" />,
+        price: "₹60,000 + GST",
+        pricingTiers: [
+            { plan: "Yearly", price: "₹70,800" },
+            { plan: "Lifetime Access", price: "₹1,41,600" }
+        ],
+        period: "/ Yearly",
+        features: [
+            "Funded Account Training on International Markets",
+            "Future of Digital Wealth",
+            "Logic, Discipline, and Mastery",
+            "Build your fortune with innovation"
+        ],
+        landingPage: {
+            hero: {
+                headline: "THE MONEY CODE | VD",
+                subheadline: "Welcome to a revolutionary mentorship by Vinith Dcosta & Associates. Built for those who want to master the future of Digital Wealth.",
+                cta: "Start Your Journey",
+                urgency: "VD is expanding its horizons!"
+            },
+            painPoints: [
+                { title: "Missed the Boom?", desc: "Don't watch from the sidelines. Step into the world where finance meets innovation." },
+                { title: "Lack of Strategy?", desc: "Learn how to build your fortune with logic, discipline, and mastery." },
+                { title: "Global Barriers?", desc: "Break free with Funded Account Training on International Markets." }
+            ],
+            valueVault: {
+                vdTools: [
+                    "Funded Account Training",
+                    "International Market Access",
+                    "Digital Asset Mastery"
+                ],
+                vinithExpertise: [
+                    "Logic & Discipline Mastery",
+                    "Future Wealth Strategies",
+                    " exclusive Global Insights"
+                ]
+            },
+            testimonials: [
+                { name: "Rahul, Tech Lead", quote: "The international exposure opened a whole new world of opportunities." },
+                { name: "Sneha, Entrepreneur", quote: "Finally, a logical approach to digital assets without the hype." }
+            ],
+            comparison: {
+                originalTotal: "₹1,50,000",
+                bundlePrice: "₹70,800",
+                saveAmount: "₹79,200"
             }
         }
     }

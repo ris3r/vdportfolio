@@ -51,13 +51,13 @@ const Settings = () => {
             newErrors.email = "Please enter a valid email address.";
         }
 
-        // Phone Validation (10-15 digits)
-        // Only validate if phone is provided (optional field?) or make it required.
-        // Assuming required based on other forms:
-        if (formData.phone) {
-            const phoneRegex = /^\+?[0-9]{10,15}$/;
-            if (!phoneRegex.test(formData.phone.replace(/\s/g, ''))) {
-                newErrors.phone = "Please enter a valid phone number (10-15 digits).";
+        // Phone Validation (Strict 10 digits)
+        if (!formData.phone) {
+            newErrors.phone = "Phone number is required.";
+        } else {
+            const phoneRegex = /^[0-9]{10}$/;
+            if (!phoneRegex.test(formData.phone.replace(/\D/g, ''))) {
+                newErrors.phone = "Please enter a valid 10-digit phone number.";
             }
         }
 
@@ -78,7 +78,7 @@ const Settings = () => {
         try {
             const updateData = {
                 name: formData.name,
-                email: formData.email,
+                // email: formData.email, // Email is immutable
                 phone: formData.phone
             };
 
@@ -127,24 +127,31 @@ const Settings = () => {
                                             type="text"
                                             name="name"
                                             value={formData.name}
-                                            onChange={handleChange}
-                                            className="w-full bg-neutral-800/50 border border-neutral-700 rounded-xl py-3 pl-12 pr-4 text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/50 transition-all placeholder:text-neutral-600"
+                                            onChange={(e) => {
+                                                handleChange(e);
+                                                setErrors(prev => ({ ...prev, name: null }));
+                                            }}
+                                            className={`w-full bg-neutral-800/50 border rounded-xl py-3 pl-12 pr-4 text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/50 transition-all placeholder:text-neutral-600 ${errors.name ? 'border-red-500' : 'border-neutral-700'}`}
                                         />
                                     </div>
+                                    {errors.name && <p className="text-red-500 text-xs mt-1 ml-1">{errors.name}</p>}
                                 </div>
 
                                 <div>
                                     <label className="block mb-2 text-gray-400 text-sm">Email Address</label>
                                     <div className="relative">
-                                        <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gold" />
+                                        <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
                                         <input
                                             type="email"
                                             name="email"
                                             value={formData.email}
-                                            onChange={handleChange}
-                                            className="w-full bg-neutral-800/50 border border-neutral-700 rounded-xl py-3 pl-12 pr-4 text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/50 transition-all placeholder:text-neutral-600"
+                                            disabled
+                                            className="w-full bg-neutral-900 border border-neutral-800 rounded-xl py-3 pl-12 pr-4 text-gray-500 cursor-not-allowed focus:outline-none transition-all"
+                                            title="Email cannot be changed. Contact support for assistance."
                                         />
+                                        <Lock size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-600" />
                                     </div>
+                                    <p className="text-xs text-gray-600 mt-1 ml-1">Email cannot be changed manually.</p>
                                 </div>
 
                                 <div>
@@ -178,6 +185,7 @@ const Settings = () => {
                             </Button>
                         </div>
                     </form>
+
                 </div>
             </div >
         </div >

@@ -4,9 +4,18 @@ import { Check } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-const ServiceCard = ({ id, title, price, priceSuffix, renewal, features, isPopular, specialHighlight, subtitle, buttonText }) => {
+const ServiceCard = ({ id, title, price, priceSuffix, renewal, features, isPopular, specialHighlight, subtitle, buttonText, highlightColor = 'green' }) => {
     const cardRef = useRef(null);
     const isPriceString = typeof price === 'string' || typeof price === 'number';
+
+    const colorMap = {
+        green: { bg: 'bg-green-500', shadow: 'shadow-green-500/20', glow: 'rgba(74, 222, 128, 0.15)' },
+        purple: { bg: 'bg-purple-600', shadow: 'shadow-purple-600/20', glow: 'rgba(147, 51, 234, 0.25)' }, // Royal Purple
+        cyan: { bg: 'bg-cyan-400', shadow: 'shadow-cyan-400/20', glow: 'rgba(34, 211, 238, 0.25)' }     // Neon Blue/Cyan
+    };
+
+    // Fallback if an invalid color is passed
+    const activeColor = colorMap[highlightColor] || colorMap.green;
 
     useGSAP(() => {
         if (!cardRef.current) return;
@@ -24,10 +33,10 @@ const ServiceCard = ({ id, title, price, priceSuffix, renewal, features, isPopul
             ease: 'power2.out'
         });
 
-        // Special Pulse Effect for Starter Plan
+        // Special Pulse Effect
         if (specialHighlight) {
             gsap.to(card, {
-                boxShadow: '0 0 20px rgba(74, 222, 128, 0.15)', // Greenish glow
+                boxShadow: `0 0 20px ${activeColor.glow}`,
                 repeat: -1,
                 yoyo: true,
                 duration: 2,
@@ -42,7 +51,7 @@ const ServiceCard = ({ id, title, price, priceSuffix, renewal, features, isPopul
             card.removeEventListener('mouseenter', () => tl.play());
             card.removeEventListener('mouseleave', () => tl.reverse());
         };
-    }, { scope: cardRef });
+    }, { scope: cardRef, dependencies: [specialHighlight, activeColor] });
 
     return (
         <div
@@ -56,7 +65,7 @@ const ServiceCard = ({ id, title, price, priceSuffix, renewal, features, isPopul
             )}
 
             {specialHighlight && (
-                <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-green-500 text-black px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider shadow-lg shadow-green-500/20 whitespace-nowrap z-20 flex items-center gap-2">
+                <div className={`absolute -top-5 left-1/2 -translate-x-1/2 ${activeColor.bg} text-black px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider shadow-lg ${activeColor.shadow} whitespace-nowrap z-20 flex items-center gap-2`}>
                     <span className="relative flex h-3 w-3">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-3 w-3 bg-black"></span>
@@ -103,7 +112,7 @@ const ServiceCard = ({ id, title, price, priceSuffix, renewal, features, isPopul
                     : 'border border-white/20 text-white hover:border-gold hover:text-gold hover:bg-white/5'
                     }`}
             >
-                {buttonText || "View Details & Register"}
+                {buttonText || "View Details & Inquire"}
             </Link>
         </div>
     );

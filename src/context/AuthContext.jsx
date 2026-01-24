@@ -44,6 +44,7 @@ export const AuthProvider = ({ children }) => {
             try {
                 if (currentUser) {
                     console.log("AuthStateChanged: User detected", currentUser.uid);
+                    setLoading(true); // Ensure UI waits for Firestore profile check
 
                     // Critical Security Check: Ensure email is verified before allowing access
                     // Critical Security Check: Ensure email is verified before allowing access
@@ -109,7 +110,11 @@ export const AuthProvider = ({ children }) => {
                         }
                     }, (error) => {
                         console.error("Firestore (onSnapshot) Error:", error);
-                        // Fallback but keep logged in as basic user if it's just a permission/network blip
+                        // Permission denied usually means:
+                        // 1. Doc doesn't exist (and rules forbid reading non-existent doc sometimes)
+                        // 2. Rules are too strict
+                        // Fallback: Allow login as basic user to prevent loop.
+                        // We DO NOT sign out here. We just assume they are a standard user.
                         setUser({ ...currentUser, role: 'user', isFallback: true });
                         setLoading(false);
                     });
@@ -167,6 +172,15 @@ export const AuthProvider = ({ children }) => {
             }
 
         } catch (error) {
+            console.error("Login Gate Error:", error);
+
+            // If it's a permission error or missing doc error that we want to ignore for fallback:
+            if (error.code === 'permission-denied' || error.message.includes('permission')) {
+                console.warn("Login Gate: Permission denied reading profile. Allowing fallback login.");
+                return userCredential; // Allow proceed
+            }
+
+            // Only sign out for strict block/delete logic failures that are NOT permission errors
             // Ensure we don't leave a half-logged-in state if Firestore fails or rejects
             if (auth.currentUser) await signOut(auth);
             throw error;

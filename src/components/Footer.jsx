@@ -33,11 +33,11 @@ const Footer = () => {
                     <div>
                         <h4 style={{ color: 'white', fontSize: '1.1rem', marginBottom: '20px' }}>Quick Links</h4>
                         <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                            <li><Link to="/" className="text-muted hover:text-gold transition-colors">Home</Link></li>
-                            <li><Link to="/about" className="text-muted hover:text-gold transition-colors">About Founder</Link></li>
-                            <li><Link to="/services" className="text-muted hover:text-gold transition-colors">Services & Mentorship</Link></li>
-                            <li><Link to="/compliance" className="text-muted hover:text-gold transition-colors">Compliance Documents</Link></li>
-                            <li><Link to="/contact" className="text-muted hover:text-gold transition-colors">Contact Us</Link></li>
+                            <li><Link to="/" onClick={() => window.scrollTo(0, 0)} className="text-muted hover:text-gold transition-colors">Home</Link></li>
+                            <li><Link to="/about" onClick={() => window.scrollTo(0, 0)} className="text-muted hover:text-gold transition-colors">About Founder</Link></li>
+                            <li><Link to="/services" onClick={() => window.scrollTo(0, 0)} className="text-muted hover:text-gold transition-colors">Services & Mentorship</Link></li>
+                            <li><Link to="/compliance" onClick={() => window.scrollTo(0, 0)} className="text-muted hover:text-gold transition-colors">Compliance Documents</Link></li>
+                            <li><Link to="/contact" onClick={() => window.scrollTo(0, 0)} className="text-muted hover:text-gold transition-colors">Contact Us</Link></li>
                         </ul>
                     </div>
 
