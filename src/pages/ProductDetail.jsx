@@ -31,17 +31,26 @@ const ProductDetail = () => {
     // Simple inline Phone Prompt Modal Component
     const PhonePromptModal = () => {
         const [phoneInput, setPhoneInput] = useState('');
+        const [error, setError] = useState('');
         const { updateProfile } = useAuth(); // Assuming AuthContext exposes updateProfile
 
         if (!showPhonePrompt) return null;
 
         const handleSubmit = async (e) => {
             e.preventDefault();
-            if (!phoneInput.trim()) return;
+            setError('');
+
+            const cleanPhone = phoneInput.trim();
+
+            // Validation: Exactly 10 digits
+            if (!/^\d{10}$/.test(cleanPhone)) {
+                setError('Please enter a valid 10-digit phone number.');
+                return;
+            }
 
             try {
                 // 1. Update Profile
-                await updateProfile({ phone: phoneInput });
+                await updateProfile({ phone: cleanPhone });
 
                 // 2. Submit Interest (Retry)
                 await handleInterestClick(true); // Retry flag
@@ -49,7 +58,7 @@ const ProductDetail = () => {
                 setShowPhonePrompt(false);
             } catch (error) {
                 console.error("Phone update failed:", error);
-                alert("Failed to update phone number. Please try again.");
+                setError("Failed to update phone number. Please try again.");
             }
         };
 
@@ -64,19 +73,31 @@ const ProductDetail = () => {
                     </button>
                     <h3 className="text-2xl font-bold text-white mb-4">One Last Step</h3>
                     <p className="text-gray-400 mb-6">Please provide your phone number so we can reach you to confirm your spot.</p>
+
+                    {error && (
+                        <div className="bg-red-500/10 border border-red-500/50 text-red-500 p-3 rounded-lg text-sm mb-4">
+                            {error}
+                        </div>
+                    )}
+
                     <form onSubmit={handleSubmit} className="space-y-4">
                         <input
                             type="tel"
                             required
                             autoFocus
-                            placeholder="Phone Number"
+                            placeholder="Phone Number (10 digits)"
                             className="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-white focus:border-gold outline-none"
                             value={phoneInput}
-                            onChange={(e) => setPhoneInput(e.target.value)}
+                            onChange={(e) => {
+                                // Allow only numbers
+                                const val = e.target.value.replace(/\D/g, '');
+                                if (val.length <= 10) setPhoneInput(val);
+                            }}
                         />
                         <button
                             type="submit"
-                            className="w-full bg-gold text-black font-bold py-3 rounded-xl hover:bg-yellow-400"
+                            className="w-full bg-gold text-black font-bold py-3 rounded-xl hover:bg-yellow-400 disabled:opacity-50 disabled:cursor-not-allowed"
+                            disabled={phoneInput.length !== 10}
                         >
                             Confirm & Continue
                         </button>

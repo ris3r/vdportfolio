@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { MessageCircle, X, Lock, TrendingUp, ShieldCheck } from 'lucide-react';
 import Button from './Button';
 import { useAuth } from '../context/AuthContext';
@@ -10,21 +10,27 @@ const DiscordPromoModal = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
 
+    const location = useLocation(); // Imported from react-router-dom, need to add to import
+
     useEffect(() => {
-        // Only show if not loading and user is NOT logged in
-        if (!loading && !user) {
-            // Check if we've shown it recently to avoid TOTAL spam on refresh (optional, but good UX)
-            // User asked to "force", so we will show it. 
-            // Let's add a small delay so it doesn't pop INSTANTLY on load which looks glitchy
+        // 1. Only show if not loading and user is NOT logged in
+        // 2. Only show on Home Page ('/')
+        // 3. Only show ONCE per session (sessionStorage)
+        const hasShown = sessionStorage.getItem('hasShownDiscordPromo');
+
+        if (!loading && !user && location.pathname === '/' && !hasShown) {
             const timer = setTimeout(() => {
                 setIsOpen(true);
                 // Animation frame for fade-in
                 requestAnimationFrame(() => setIsVisible(true));
+
+                // Mark as shown for this session
+                sessionStorage.setItem('hasShownDiscordPromo', 'true');
             }, 2000); // 2 seconds delay
 
             return () => clearTimeout(timer);
         }
-    }, [loading, user]);
+    }, [loading, user, location.pathname]);
 
     const handleLogin = () => {
         setIsOpen(false);

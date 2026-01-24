@@ -44,11 +44,15 @@ export const AuthProvider = ({ children }) => {
             try {
                 if (currentUser) {
                     console.log("AuthStateChanged: User detected", currentUser.uid);
-                    setLoading(true); // Ensure UI waits for Firestore profile check
+
+                    // Prevent UI unmount during registration
+                    if (!verificationCheckBypass.current) {
+                        setLoading(true);
+                    }
 
                     // Critical Security Check: Ensure email is verified before allowing access
                     // Critical Security Check: Ensure email is verified before allowing access
-                    if (!currentUser.emailVerified) {
+                    if (!currentUser.emailVerified && !verificationCheckBypass.current) {
                         console.warn("User email not verified. Forcing sign-out.");
                         await signOut(auth);
                         setLoading(false);
@@ -101,6 +105,13 @@ export const AuthProvider = ({ children }) => {
                             }
                         } else {
                             // Profile missing? This means account was deleted by Admin or data corruption.
+
+                            // Check for registration bypass
+                            if (verificationCheckBypass.current) {
+                                console.log("AuthContext: Profile missing but registration in progress. Waiting for creation...");
+                                return; // Do nothing, keep loading true, wait for next snapshot update
+                            }
+
                             // Force strict logout.
                             console.warn("User profile missing in Firestore. Account likely deleted.");
                             alert("Your account data is missing or has been deleted. Please contact support.");
@@ -191,6 +202,8 @@ export const AuthProvider = ({ children }) => {
 
     const register = async (name, email, password, phone = '') => {
         let newUser = null;
+        verificationCheckBypass.current = true; // Prevent auto-logout during DB creation
+
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             newUser = userCredential.user;
@@ -223,15 +236,7 @@ export const AuthProvider = ({ children }) => {
             // Rollback: specific handling if Firestore write fails but Auth succeeded
             if (newUser) {
                 try {
-                    // Attempt to delete the orphan auth user
-                    // Note: This requires recent login which we just did, so it should work.
-                    // However, we need to import deleteUser. For simplicity in this context 
-                    // where we might not want to import more heavy dependencies, 
-                    // we will just ensure the error is propagated clearly. 
-                    // Ideally: await deleteUser(newUser); 
-                    // But standard recommended practice if Firestore fails is to let the user retry 
-                    // or handle the inconsistency. 
-                    // For now, let's just make sure we don't leave the app in a "logged in" state if data failed.
+                    // Force signout to ensure clean state
                     await signOut(auth);
                     setUser(null);
                 } catch (cleanupError) {
@@ -239,6 +244,8 @@ export const AuthProvider = ({ children }) => {
                 }
             }
             throw error;
+        } finally {
+            verificationCheckBypass.current = false; // Reset flag
         }
     };
 
