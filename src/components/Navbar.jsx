@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, User, LogOut, Settings, LayoutDashboard } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
