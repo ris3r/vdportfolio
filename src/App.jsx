@@ -28,6 +28,10 @@ const PageLoader = () => (
     </div>
 );
 
+import PageWrapper from './components/PageWrapper';
+
+// ... (existing imports)
+
 function App() {
     return (
         <AuthProvider>
@@ -39,27 +43,27 @@ function App() {
                     <main className="flex-1">
                         <Suspense fallback={<PageLoader />}>
                             <Routes>
-                                <Route path="/" element={<Home />} />
-                                <Route path="/about" element={<About />} />
-                                <Route path="/services" element={<Services />} />
-                                <Route path="/compliance" element={<Compliance />} />
-                                <Route path="/contact" element={<Contact />} />
-                                <Route path="/login" element={<Login />} />
-                                <Route path="/register" element={<Register />} />
+                                <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
+                                <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
+                                <Route path="/services" element={<PageWrapper><Services /></PageWrapper>} />
+                                <Route path="/compliance" element={<PageWrapper><Compliance /></PageWrapper>} />
+                                <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
+                                <Route path="/login" element={<PageWrapper><Login /></PageWrapper>} />
+                                <Route path="/register" element={<PageWrapper><Register /></PageWrapper>} />
                                 <Route path="/dashboard" element={
                                     <ProtectedRoute>
                                         <ErrorBoundary>
-                                            <Dashboard />
+                                            <PageWrapper><Dashboard /></PageWrapper>
                                         </ErrorBoundary>
                                     </ProtectedRoute>
                                 } />
                                 <Route path="/settings" element={
                                     <ProtectedRoute>
-                                        <Settings />
+                                        <PageWrapper><Settings /></PageWrapper>
                                     </ProtectedRoute>
                                 } />
-                                <Route path="/product/:id" element={<ProductDetail />} />
-                                <Route path="*" element={<NotFound />} />
+                                <Route path="/product/:id" element={<PageWrapper><ProductDetail /></PageWrapper>} />
+                                <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
                             </Routes>
                         </Suspense>
                     </main>

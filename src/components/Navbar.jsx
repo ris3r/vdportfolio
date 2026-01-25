@@ -13,6 +13,14 @@ const Navbar = () => {
   const { user, logout } = useAuth();
   const dropdownRef = useRef(null);
   const mobileMenuRef = useRef(null);
+  const navContainerRef = useRef(null);
+
+  useGSAP(() => {
+    const tl = gsap.timeline({ delay: 0.2 });
+    tl.from(".nav-logo", { y: -30, opacity: 0, duration: 0.8, ease: "power3.out" })
+      .from(".nav-item", { y: -20, opacity: 0, duration: 0.5, stagger: 0.1, ease: "power3.out" }, "-=0.4")
+      .from(".nav-auth", { opacity: 0, scale: 0.8, duration: 0.5, ease: "back.out(1.7)" }, "-=0.3");
+  }, { scope: navContainerRef });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,9 +84,9 @@ const Navbar = () => {
           : 'bg-transparent py-6'
           }`}
       >
-        <div className="container flex justify-between items-center bg-transparent relative z-[60]">
+        <div ref={navContainerRef} className="container flex justify-between items-center bg-transparent relative z-[60]">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
+          <Link to="/" className="nav-logo flex items-center gap-3 group">
             <img src="/brand_logo.png" alt="VD Logo" className="h-10 w-auto md:h-12 transition-transform duration-300 group-hover:scale-105" />
             <div className="flex flex-col">
               <span className="text-lg md:text-xl font-bold text-gold tracking-tight leading-none">VINITH DCOSTA</span>
@@ -92,7 +100,7 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className={`text-sm font-medium uppercase tracking-widest hover:text-gold transition-colors duration-200 relative group ${location.pathname === link.path ? 'text-gold' : 'text-gray-300'
+                className={`nav-item text-sm font-medium uppercase tracking-widest hover:text-gold transition-colors duration-200 relative group ${location.pathname === link.path ? 'text-gold' : 'text-gray-300'
                   }`}
               >
                 {link.name}
@@ -101,7 +109,7 @@ const Navbar = () => {
             ))}
 
             {user ? (
-              <div className="relative" ref={dropdownRef}>
+              <div className="nav-auth relative" ref={dropdownRef}>
                 <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                   className="flex items-center gap-2 border border-gold/50 text-gold hover:bg-gold/10 px-4 py-2 rounded-full transition-all duration-300"
@@ -126,8 +134,9 @@ const Navbar = () => {
                 )}
               </div>
             ) : (
-              <Link to="/login" className="btn-primary px-6 py-2 text-sm font-bold uppercase tracking-wider hover:scale-105 transition-transform">
-                Login
+              <Link to="/login" className="nav-auth btn-primary px-8 py-2 text-sm font-bold uppercase tracking-wider relative group overflow-hidden">
+                <span className="relative z-10">Login</span>
+                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
               </Link>
             )}
           </div>
@@ -174,8 +183,9 @@ const Navbar = () => {
               </button>
             </>
           ) : (
-            <Link to="/login" className="btn-primary w-full text-center text-lg">
-              Login / Register
+            <Link to="/login" className="btn-primary w-full text-center text-lg py-4 relative group overflow-hidden">
+              <span className="relative z-10">Login / Register</span>
+              <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
             </Link>
           )}
         </div>

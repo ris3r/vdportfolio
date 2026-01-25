@@ -12,8 +12,13 @@
   body {
     @apply bg-black text-white font-main overflow-x-hidden antialiased;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-heading;
   }
 }
@@ -24,11 +29,20 @@
   }
 
   .btn {
-    @apply inline-flex items-center justify-center px-6 py-3 rounded-md font-semibold text-sm transition-all duration-300 uppercase tracking-wider;
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 uppercase tracking-wider;
   }
 
   .btn-primary {
-    @apply bg-gradient-to-br from-gold to-gold-dark text-black border-none hover:-translate-y-0.5 hover:shadow-[0_4px_15px_rgba(255,215,0,0.4)];
+    @apply bg-gradient-to-br from-gold-light via-gold to-gold-dark text-black border-none rounded-full font-bold transition-all duration-300;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0) scale(0.95);
   }
 
   .btn-outline {
@@ -42,9 +56,9 @@
   .section-padding {
     @apply py-16 md:py-24;
   }
-  
+
   .text-gradient-gold {
-     @apply bg-clip-text text-transparent bg-gradient-to-r from-gold via-gold-light to-gold;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-gold via-gold-light to-gold;
   }
 }
 
@@ -54,14 +68,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #050505; 
+  background: #050505;
 }
- 
+
 ::-webkit-scrollbar-thumb {
-  background: #333; 
+  background: #333;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #FFD700; 
+  background: #FFD700;
 }

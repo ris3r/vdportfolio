@@ -1,17 +1,10 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import ServiceCard from '../components/ServiceCard';
 import FAQSection from '../components/FAQSection';
 import { ArrowDown } from 'lucide-react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
-
-gsap.registerPlugin(ScrollTrigger);
+import AnimateOnScroll from '../components/AnimateOnScroll';
 
 const Services = () => {
-    const containerRef = useRef(null);
-    const heroRef = useRef(null);
-    const gridRef = useRef(null);
 
     const serviceFaqs = [
         {
@@ -137,39 +130,13 @@ const Services = () => {
         }
     ];
 
-    useGSAP(() => {
-        // Hero Animations
-        const tl = gsap.timeline();
-        tl.from(".hero-content > *", {
-            y: 30,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.2,
-            ease: "power3.out"
-        });
-
-        // Grid Animation
-        gsap.from(".service-card", {
-            y: 50,
-            opacity: 0,
-            duration: 0.8,
-            stagger: 0.1,
-            ease: "power3.out",
-            scrollTrigger: {
-                trigger: gridRef.current,
-                start: "top 80%",
-            }
-        });
-
-    }, { scope: containerRef });
-
     return (
-        <div ref={containerRef} className="bg-black min-h-screen pt-20">
+        <div className="bg-black min-h-screen pt-20">
             {/* Services Hero */}
-            <section ref={heroRef} className="relative min-h-[60vh] flex items-center justify-center text-center px-4 overflow-hidden bg-[radial-gradient(circle_at_center,#111_0%,#000_100%)]">
+            <section className="relative min-h-[60vh] flex items-center justify-center text-center px-4 overflow-hidden bg-[radial-gradient(circle_at_center,#111_0%,#000_100%)]">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(255,215,0,0.1)_0%,transparent_60%)] pointer-events-none"></div>
 
-                <div className="container relative z-10 hero-content">
+                <AnimateOnScroll animation="fade-up" className="container relative z-10">
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-gold mb-6 drop-shadow-[0_0_30px_rgba(255,215,0,0.3)]">
                         Choose Your Path
                     </h1>
@@ -177,17 +144,17 @@ const Services = () => {
                         Whether you're looking for comprehensive mentorship, expert market views, or personal wealth management, we have a tailored plan for your financial ascent.
                     </p>
                     <ArrowDown size={30} className="text-gold animate-bounce mx-auto" />
-                </div>
+                </AnimateOnScroll>
             </section>
 
             {/* Services Grid */}
             <section className="py-20 bg-neutral-900/30">
                 <div className="container">
-                    <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-8">
                         {services.map((service, index) => (
-                            <div key={index} className="service-card h-full">
+                            <AnimateOnScroll key={index} delay={index * 0.1} animation="scale-up" className="h-full">
                                 <ServiceCard {...service} />
-                            </div>
+                            </AnimateOnScroll>
                         ))}
                     </div>
                 </div>

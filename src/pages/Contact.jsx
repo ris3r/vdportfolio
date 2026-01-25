@@ -2,11 +2,9 @@ import React, { useRef, useState } from 'react';
 import { Mail, Phone, MapPin, Send, Star } from 'lucide-react';
 import { db } from '../firebase';
 import { collection, addDoc } from 'firebase/firestore';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
+import AnimateOnScroll from '../components/AnimateOnScroll';
 
 const Contact = () => {
-    const containerRef = useRef(null);
     const [loading, setLoading] = useState(false);
     const [status, setStatus] = useState(null);
     const [errors, setErrors] = useState({});
@@ -122,13 +120,13 @@ const Contact = () => {
     };
 
     return (
-        <div ref={containerRef} className="pt-32 pb-20 bg-black min-h-screen">
+        <div className="pt-32 pb-20 bg-black min-h-screen">
             <div className="container px-4">
                 {/* ... header ... */}
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
                     {/* Contact Info */}
-                    <div className="space-y-8">
+                    <AnimateOnScroll animation="fade-up" className="space-y-8">
                         <h3 className="text-3xl font-heading font-bold text-white mb-8">Contact Information</h3>
 
                         <div className="space-y-6">
@@ -194,10 +192,10 @@ const Contact = () => {
                                 </div>
                             </a>
                         </div>
-                    </div>
+                    </AnimateOnScroll>
 
                     {/* Contact Form */}
-                    <div className="contact-form glass-panel p-8 md:p-10 border-gold/10">
+                    <AnimateOnScroll animation="fade-up" delay={0.2} className="contact-form glass-panel p-8 md:p-10 border-gold/10">
                         <form className="space-y-6" onSubmit={handleSubmit} noValidate>
                             {/* Honeypot Field - Hidden from humans, visible to bots */}
                             <input
@@ -266,7 +264,7 @@ const Contact = () => {
                                 <p className="text-red-400 text-center font-bold">Failed to send. Please try again.</p>
                             )}
                         </form>
-                    </div>
+                    </AnimateOnScroll>
                 </div>
             </div>
         </div>

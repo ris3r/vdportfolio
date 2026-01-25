@@ -1,47 +1,29 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { CheckCircle } from 'lucide-react';
+import AnimateOnScroll from '../components/AnimateOnScroll'; // Assuming CheckCircle was missing in imports? Checking context.
 
-gsap.registerPlugin(ScrollTrigger);
+// CheckCircle is likely used but I should double check imports I am deleting.
+// The previous file had no explicit CheckCircle import in the snippet I saw? 
+// Wait, looking at file view: `import { ScrollTrigger } from ...`
+// `import { CheckCircle } ...` was NOT in the file view lines 1-5?
+// Ah line 83 uses <div ... > without CheckCircle?
+// Line 83: `key={index} className="credential-item flex items-start gap-3 text-gray-300"`
+// Line 84: `<div className="w-2 h-2 rounded-full bg-gold mt-2.5 shrink-0"></div>`
+// It seems CheckCircle is NOT used in About.jsx list. It uses a dot.
+// So I don't need CheckCircle import.
+// I will just remove the GSAP code.
 
 const About = () => {
-    const containerRef = useRef(null);
-
-    useGSAP(() => {
-        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-
-        tl.from('.founder-image', {
-            x: -50,
-            opacity: 0,
-            duration: 1
-        })
-            .from('.founder-content', {
-                x: 50,
-                opacity: 0,
-                duration: 1
-            }, '-=0.8');
-
-        gsap.from('.credential-item', {
-            y: 20,
-            opacity: 0,
-            duration: 0.6,
-            stagger: 0.1,
-            scrollTrigger: {
-                trigger: '.credentials-section',
-                start: 'top 80%',
-            }
-        });
-
-    }, { scope: containerRef });
 
     return (
-        <div ref={containerRef} className="pt-32 pb-20 bg-black min-h-screen">
+        <div className="pt-32 pb-20 bg-black min-h-screen">
             <div className="container px-4">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-
                     {/* Founder Image Section */}
-                    <div className="founder-image relative group w-full max-w-md mx-auto lg:max-w-none">
+                    <AnimateOnScroll animation="slide-right" className="founder-image relative group w-full max-w-md mx-auto lg:max-w-none">
                         <div className="relative rounded-2xl p-2 bg-gold/5 border border-gold/20 shadow-[0_0_30px_rgba(255,215,0,0.1)]">
                             {/* Decorative Corner Accents */}
                             <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-gold rounded-tl-lg -translate-x-1 -translate-y-1"></div>
@@ -53,10 +35,10 @@ const About = () => {
                                 className="w-full h-auto rounded-xl shadow-2xl filter contrast-110 brightness-110"
                             />
                         </div>
-                    </div>
+                    </AnimateOnScroll>
 
                     {/* Content Section */}
-                    <div className="founder-content">
+                    <AnimateOnScroll animation="fade-up" delay={0.2} className="founder-content">
                         <h4 className="text-gold font-bold uppercase tracking-widest text-sm mb-4">The Founder</h4>
                         <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-8">
                             Dr. Vinith Oscar Dcosta
@@ -111,7 +93,7 @@ const About = () => {
                                 Conducted private Trading Workshops in <strong className="text-gold">Dubai, Bangalore, Goa & Mangalore</strong>.
                             </p>
                         </div>
-                    </div>
+                    </AnimateOnScroll>
                 </div>
             </div>
         </div>

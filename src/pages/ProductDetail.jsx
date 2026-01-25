@@ -303,7 +303,7 @@ const ProductDetail = () => {
                                 {product.subtitle}
                             </span>
 
-                            <h1 className="hero-text-anim text-5xl md:text-7xl lg:text-8xl font-heading font-black text-white leading-none mb-8 tracking-tighter uppercase drop-shadow-[0_0_40px_rgba(255,215,0,0.2)]">
+                            <h1 className="hero-text-anim text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-heading font-black text-white leading-[1.1] mb-8 tracking-tighter uppercase drop-shadow-[0_0_40px_rgba(255,215,0,0.2)] break-words">
                                 {product.id === 'golden-mentorship' ? (
                                     <>
                                         The <br />
@@ -312,7 +312,7 @@ const ProductDetail = () => {
                                         </span>
                                     </>
                                 ) : (
-                                    <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-gold filter drop-shadow-[0_0_20px_rgba(255,215,0,0.3)]">
+                                    <span className="inline-block text-transparent bg-clip-text bg-gradient-to-b from-white to-gold filter drop-shadow-[0_0_20px_rgba(255,215,0,0.3)] max-w-full">
                                         {product.title}
                                     </span>
                                 )}
@@ -322,7 +322,7 @@ const ProductDetail = () => {
                                 {product.description}
                             </h2>
 
-                            <div className="hero-text-anim flex flex-wrap justify-center gap-8 mb-16 text-gray-400 font-medium">
+                            <div className="hero-text-anim flex flex-wrap justify-center gap-x-6 gap-y-4 mb-16 text-gray-400 font-medium text-sm md:text-base">
                                 <div className="flex items-center gap-3">
                                     <Shield size={20} className="text-gold" />
                                     <span className="border-b border-dotted border-gray-600">SEBI Registered</span>
@@ -499,8 +499,8 @@ const ProductDetail = () => {
                             <span className="hero-text-anim inline-block bg-gold/10 text-gold border border-gold/20 px-6 py-2 rounded-full font-bold uppercase text-xs tracking-[0.2em] mb-8 backdrop-blur-sm">
                                 {product.subtitle || "Premium Service"}
                             </span>
-                            <h1 className="hero-text-anim text-5xl md:text-7xl lg:text-8xl font-heading font-black text-white leading-none mb-8 tracking-tighter uppercase">
-                                <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-gold filter drop-shadow-[0_0_20px_rgba(255,215,0,0.3)]">
+                            <h1 className="hero-text-anim text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-heading font-black text-white leading-[1.1] mb-8 tracking-tighter uppercase break-words">
+                                <span className="inline-block text-transparent bg-clip-text bg-gradient-to-b from-white to-gold filter drop-shadow-[0_0_20px_rgba(255,215,0,0.3)] max-w-full">
                                     {product.title}
                                 </span>
                             </h1>
@@ -508,7 +508,7 @@ const ProductDetail = () => {
                                 {product.landingPage?.hero.subheadline || product.description}
                             </h2>
 
-                            <div className="hero-text-anim flex flex-wrap justify-center gap-8 mb-16 text-gray-400 font-medium">
+                            <div className="hero-text-anim flex flex-wrap justify-center gap-x-6 gap-y-4 mb-16 text-gray-400 font-medium text-sm md:text-base">
                                 <div className="flex items-center gap-3">
                                     <Shield size={20} className="text-gold" />
                                     <span className="border-b border-dotted border-gray-600">SEBI Registered</span>
