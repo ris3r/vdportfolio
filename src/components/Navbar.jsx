@@ -20,7 +20,7 @@ const Navbar = () => {
     const tl = gsap.timeline({ delay: 0.2 });
     tl.from(".nav-logo", { y: -30, opacity: 0, duration: 0.8, ease: "power3.out" })
       .from(".nav-item", { y: -20, opacity: 0, duration: 0.5, stagger: 0.1, ease: "power3.out" }, "-=0.4")
-      .from(".nav-auth", { opacity: 0, scale: 0.8, duration: 0.5, ease: "back.out(1.7)" }, "-=0.3");
+      .from(".nav-auth", { opacity: 0, scale: 0.8, duration: 0.5, ease: "back.out(1.7)", clearProps: "all" }, "-=0.3");
   }, { scope: navContainerRef });
 
   useEffect(() => {
@@ -135,10 +135,12 @@ const Navbar = () => {
                 )}
               </div>
             ) : (
-              <Link to="/login" className="nav-auth btn-primary px-8 py-2 text-sm font-bold uppercase tracking-wider relative group overflow-hidden">
-                <span className="relative z-10">Login</span>
-                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-              </Link>
+              <div className="nav-auth">
+                <Link to="/login" className="btn-primary px-8 py-2 text-sm font-bold uppercase tracking-wider relative group overflow-hidden block">
+                  <span className="relative z-10">Login</span>
+                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                </Link>
+              </div>
             )}
           </div>
 
