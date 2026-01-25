@@ -283,7 +283,7 @@ export const products = [
             hero: {
                 headline: "THE MONEY CODE | VD",
                 subheadline: "Welcome to a revolutionary mentorship by Vinith Dcosta & Associates. Built for those who want to master the future of Digital Wealth.",
-                cta: "Start Your Journey",
+                cta: "Request Callback",
                 urgency: "VD is expanding its horizons!"
             },
             painPoints: [
