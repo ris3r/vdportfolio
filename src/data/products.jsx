@@ -15,6 +15,7 @@ export const products = [
         features: [
             "VD Financepedia: Advanced Course Strategies & Software",
             "Vinith Dcosta & Associates : Daily Recommendations on Trading & Investing",
+            "Specialized Option Buying & Selling Recommendations with Chart Logics ( Nifty, Banknifty, Stock Options)",
             "Financial astro Prediction Software & Stock Screeners",
             "Stock Views (Short/Long term, Penny stocks)",
             "Options & Futures Trading",
@@ -28,6 +29,7 @@ export const products = [
                 items: [
                     "Daily Educational Views on Trading",
                     "Weekly Live Demo Trading Sessions for the students",
+                    "Specialized Option Buying & Selling Recommendations with Chart Logics ( Nifty, Banknifty, Stock Options)",
                     "Financial astro Prediction Software & Stock Screeners (International Markets & Commodities)",
                     "Master Stock Prediction Mythology & Financial Astrology",
                     "Educational Seminars, Classes & Coaching on Smart Money Concepts & Advanced Price Action"
@@ -62,6 +64,7 @@ export const products = [
                 vdTools: [
                     "Daily Educational Views on Trading",
                     "Weekly Live Demo Trading Sessions",
+                    "Specialized Option Buying & Selling Recommendations with Chart Logics ( Nifty, Banknifty, Stock Options)",
                     "Financial astro Prediction Software & Stock Screeners",
                     "Master Stock Prediction Mythology & Astrology",
                     "Educational Seminars, Classes & Coaching on Smart Money Concepts & Advanced Price Action"
@@ -98,6 +101,7 @@ export const products = [
             "Options, Futures Recommendations (Intraday & Delivery)",
             "Strong Equity Picks for Wealth Creation",
             "Real Time Market Analysis",
+            "Specialized Option Buying & Selling Recommendations with Chart Logics ( Nifty, Banknifty, Stock Options)",
             "Minimum Capital Required: ₹10,000 - ₹15,000"
         ],
         pricingTiers: [

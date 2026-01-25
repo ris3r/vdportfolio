@@ -33,8 +33,12 @@ const YouTubeSection = () => {
                                     <img src="/brand_logo.png" alt="Lux Trade Logo" className="w-full h-full object-cover" />
                                 </div>
                                 <div>
-                                    <h2 className="text-2xl md:text-3xl font-heading text-white mb-2 leading-tight">
-                                        The Wealth Code <span className="text-lg md:text-xl text-gray-400 font-normal">by</span> <span className="text-gold">Dr. Vinith Dcosta</span>
+                                    <h2 className="text-2xl md:text-3xl font-heading text-white mb-2 leading-tight flex flex-col items-center md:items-start">
+                                        <span>The Wealth Code</span>
+                                        <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-2">
+                                            <span className="text-lg md:text-xl text-gray-400 font-normal">by</span>
+                                            <span className="text-gold">Dr. Vinith Dcosta</span>
+                                        </div>
                                     </h2>
                                     <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-gray-400 justify-center md:justify-start items-center mt-2">
                                         <a href="https://youtube.com/@VinithDcosta" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold transition-colors bg-white/5 px-3 py-1 rounded-full md:bg-transparent md:p-0 md:rounded-none">

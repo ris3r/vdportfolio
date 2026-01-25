@@ -66,6 +66,7 @@ const Services = () => {
                 "Options, Futures Recommendations (Intraday & Delivery)",
                 "Real Time Market Analysis",
                 "Strong Equity Picks for Wealth Creation",
+                "Specialized Option Buying & Selling Recommendations with Chart Logics ( Nifty, Banknifty, Stock Options)",
                 "Minimum Capital: ₹10,000 - ₹15,000",
                 "Monthly & Half-Yearly Plans Available"
             ],
@@ -81,6 +82,7 @@ const Services = () => {
             features: [
                 "VD Financepedia: Advanced Course Strategies & Software",
                 "Vinith Dcosta & Associates : Daily Recommendations on Trading & Investing",
+                "Specialized Option Buying & Selling Recommendations with Chart Logics ( Nifty, Banknifty, Stock Options)",
                 "Weekly Live Demo Trading Sessions",
                 "Financial astro Prediction Software & Stock Screeners",
                 "Educational Seminars, Classes & Coaching on Smart Money Concepts & Advanced Price Action",
