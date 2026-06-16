@@ -9,9 +9,9 @@ export const products = [
         hook: "Knowledge. Tools. Growth. Expert Guidance.",
         description: "A comprehensive bundle combining VD Financepedia's educational rigor with Vinith Dcosta & Associates' market guidance. The ultimate path to financial mastery.",
         icon: <Award size={50} color="var(--color-gold)" />,
-        price: "₹1,53,000",
+        price: "₹1,60,000",
         originalPrice: "₹2,00,098",
-        saveLabel: "25% OFF",
+        saveLabel: "20% OFF",
         features: [
             "VD Financepedia: Advanced Course Strategies & Software",
             "Vinith Dcosta & Associates : Daily Recommendations on Trading & Investing",
@@ -51,7 +51,7 @@ export const products = [
         renewal: "yearly renewal of 15K + 18% GST",
         landingPage: {
             hero: {
-                headline: "Unlock the Golden Edge: 25% OFF Market Mastery",
+                headline: "Unlock the Golden Edge: 20% OFF Market Mastery",
                 subheadline: "Stop Guessing. Start Dominating. The Collaborative Bundle for Serious Traders.",
                 cta: "Request Callback"
             },
@@ -83,8 +83,8 @@ export const products = [
             ],
             comparison: {
                 originalTotal: "₹2,00,098",
-                bundlePrice: "₹1,53,000",
-                saveAmount: "₹47,098"
+                bundlePrice: "₹1,60,000",
+                saveAmount: "₹40,098"
             }
         }
     },

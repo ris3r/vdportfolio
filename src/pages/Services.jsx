@@ -69,7 +69,7 @@ const Services = () => {
             id: 'golden-mentorship',
             title: "The Golden Mentorship",
             subtitle: "Collaborative Bundle Offer",
-            price: "₹1,53,000",
+            price: "₹1,60,000",
             priceSuffix: "(Inclusive of all taxes)",
             renewal: "Renewal: ₹15,000 + 18% GST / Year",
             features: [
