@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
-import { getAnalytics } from "firebase/analytics";
+import { getAnalytics, isSupported } from "firebase/analytics";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -17,7 +17,16 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+
+// Initialize Analytics safely (prevent crashes in Brave/ad-blockers)
+let analytics = null;
+isSupported().then((supported) => {
+    if (supported) {
+        analytics = getAnalytics(app);
+    }
+}).catch((err) => {
+    console.warn("Firebase Analytics is not supported or was blocked:", err);
+});
 
 // Initialize Services
 // Initialize Services
