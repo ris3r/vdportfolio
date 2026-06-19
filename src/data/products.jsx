@@ -10,7 +10,7 @@ export const products = [
         description: "A comprehensive bundle combining VD Financepedia's educational rigor with Vinith Dcosta & Associates' market guidance. The ultimate path to financial mastery.",
         icon: <Award size={50} color="var(--color-gold)" />,
         price: "₹1,60,000",
-        originalPrice: "₹2,00,098",
+        originalPrice: "₹2,00,000",
         saveLabel: "20% OFF",
         features: [
             "VD Financepedia: Advanced Course Strategies & Software",
@@ -24,8 +24,8 @@ export const products = [
         details: [
             {
                 title: "VD Financepedia",
-                originalPrice: "₹1,30,999",
-                price: "₹1,00,000",
+                originalPrice: "₹1,40,000",
+                price: "₹1,10,000",
                 items: [
                     "Daily Educational Views on Trading",
                     "Weekly Live Demo Trading Sessions for the students",
@@ -37,8 +37,8 @@ export const products = [
             },
             {
                 title: "Vinith Dcosta & Associates",
-                originalPrice: "₹57,999",
-                price: "₹45,000",
+                originalPrice: "₹60,000",
+                price: "₹50,000",
                 gst: "+ 18% GST",
                 items: [
                     "Stock Views (Short/Long term ideas)",
@@ -82,9 +82,9 @@ export const products = [
                 { name: "Amit, Dubai", quote: "Finally, a mentorship that pays for itself in the first month." }
             ],
             comparison: {
-                originalTotal: "₹2,00,098",
+                originalTotal: "₹2,00,000",
                 bundlePrice: "₹1,60,000",
-                saveAmount: "₹40,098"
+                saveAmount: "₹40,000"
             }
         }
     },
